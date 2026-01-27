@@ -42,145 +42,182 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] font-[family-name:var(--font-space-mono)]">
+    <div className="min-h-screen psychedelic-bg font-[family-name:var(--font-space-mono)] poster-border">
       <main className="flex flex-col items-center px-6 py-16 md:py-24 max-w-2xl mx-auto">
         {/* Back link */}
         <Link
           href="/"
-          className="self-start text-[#EECEC6]/50 text-sm tracking-[0.1em] uppercase mb-12 hover:text-[#EECEC6] transition-colors"
+          className="self-start text-[#6CB4EE]/70 text-sm tracking-[0.1em] uppercase mb-12 hover:text-[#E84A8A] transition-colors flex items-center gap-2"
         >
-          &larr; Back
+          <span className="text-[#C41E3A]">✿</span>
+          <span>&larr; Back</span>
         </Link>
 
+        {/* Decorative top */}
+        <div className="text-[#C41E3A] text-xl tracking-[0.8em] mb-8 opacity-80">
+          ❀ ✿ ❀
+        </div>
+
         {/* Logo */}
-        <div className="mb-12">
+        <div className="mb-10">
           <Image
             src="/wabodogs-logo.png"
             alt="WABO DOGS"
             width={300}
             height={50}
             priority
-            className="w-[200px] md:w-[300px]"
+            className="w-[180px] md:w-[260px]"
           />
         </div>
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-4 font-[family-name:var(--font-playfair)] tracking-tight">
-          <span className="text-[#EECEC6]">Tournament</span>{" "}
-          <span className="text-[#E85A4F]">Registration</span>
+          <span className="text-[#F5E6D3] psychedelic-glow">Tournament</span>{" "}
+          <span className="wavy-text">Registration</span>
         </h1>
 
-        <p className="text-[#EECEC6]/60 text-sm mb-12 text-center">
+        {/* Skull and roses */}
+        <div className="flex items-center gap-3 mb-4 text-lg">
+          <span className="text-[#C41E3A]">✿</span>
+          <span className="text-[#F5E6D3]">☠</span>
+          <span className="text-[#C41E3A]">✿</span>
+        </div>
+
+        <p className="text-[#6CB4EE]/80 text-sm mb-10 text-center">
           Register your team for Sunshine Daydream
         </p>
 
         {/* Success Message */}
         {submitStatus === "success" && (
-          <div className="w-full mb-8 p-4 border border-green-500/50 bg-green-500/10 text-green-400 text-sm text-center">
+          <div className="w-full mb-8 p-4 border-2 border-[#DAA520]/50 bg-[#DAA520]/10 text-[#DAA520] text-sm text-center">
+            <span className="text-lg mr-2">✿</span>
             Registration successful! We&apos;ll be in touch soon.
+            <span className="text-lg ml-2">✿</span>
           </div>
         )}
 
         {/* Error Message */}
         {submitStatus === "error" && (
-          <div className="w-full mb-8 p-4 border border-red-500/50 bg-red-500/10 text-red-400 text-sm text-center">
+          <div className="w-full mb-8 p-4 border-2 border-[#C41E3A]/50 bg-[#C41E3A]/10 text-[#C41E3A] text-sm text-center">
             Something went wrong. Please try again.
           </div>
         )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="w-full space-y-6">
-          {/* Player Name */}
-          <div>
-            <label
-              htmlFor="playerName"
-              className="block text-[#E85A4F] text-xs tracking-[0.2em] uppercase mb-2"
-            >
-              Player Name
-            </label>
-            <input
-              type="text"
-              id="playerName"
-              required
-              value={formData.playerName}
-              onChange={(e) => setFormData({ ...formData, playerName: e.target.value })}
-              className="w-full bg-transparent border border-[#EECEC6]/30 text-[#EECEC6] px-4 py-3 text-base focus:outline-none focus:border-[#E85A4F] transition-colors"
-              placeholder="Your name"
-            />
-          </div>
+        {/* Form - in ornate frame */}
+        <form onSubmit={handleSubmit} className="w-full ornate-frame">
+          <div className="space-y-6">
+            {/* Player Name */}
+            <div>
+              <label
+                htmlFor="playerName"
+                className="block text-[#E84A8A] text-xs tracking-[0.2em] uppercase mb-2"
+              >
+                Player Name
+              </label>
+              <input
+                type="text"
+                id="playerName"
+                required
+                value={formData.playerName}
+                onChange={(e) => setFormData({ ...formData, playerName: e.target.value })}
+                className="w-full bg-[#0F2438]/50 border-2 border-[#6CB4EE]/30 text-[#F5E6D3] px-4 py-3 text-base focus:outline-none focus:border-[#E84A8A] transition-colors"
+                placeholder="Your name"
+              />
+            </div>
 
-          {/* Partner Name */}
-          <div>
-            <label
-              htmlFor="partnerName"
-              className="block text-[#E85A4F] text-xs tracking-[0.2em] uppercase mb-2"
-            >
-              Partner Name
-            </label>
-            <input
-              type="text"
-              id="partnerName"
-              required
-              value={formData.partnerName}
-              onChange={(e) => setFormData({ ...formData, partnerName: e.target.value })}
-              className="w-full bg-transparent border border-[#EECEC6]/30 text-[#EECEC6] px-4 py-3 text-base focus:outline-none focus:border-[#E85A4F] transition-colors"
-              placeholder="Your partner's name"
-            />
-          </div>
+            {/* Partner Name */}
+            <div>
+              <label
+                htmlFor="partnerName"
+                className="block text-[#E84A8A] text-xs tracking-[0.2em] uppercase mb-2"
+              >
+                Partner Name
+              </label>
+              <input
+                type="text"
+                id="partnerName"
+                required
+                value={formData.partnerName}
+                onChange={(e) => setFormData({ ...formData, partnerName: e.target.value })}
+                className="w-full bg-[#0F2438]/50 border-2 border-[#6CB4EE]/30 text-[#F5E6D3] px-4 py-3 text-base focus:outline-none focus:border-[#E84A8A] transition-colors"
+                placeholder="Your partner's name"
+              />
+            </div>
 
-          {/* Shirt Size */}
-          <div>
-            <label
-              htmlFor="shirtSize"
-              className="block text-[#E85A4F] text-xs tracking-[0.2em] uppercase mb-2"
-            >
-              Shirt Size
-            </label>
-            <select
-              id="shirtSize"
-              required
-              value={formData.shirtSize}
-              onChange={(e) => setFormData({ ...formData, shirtSize: e.target.value })}
-              className="w-full bg-[#0F0F0F] border border-[#EECEC6]/30 text-[#EECEC6] px-4 py-3 text-base focus:outline-none focus:border-[#E85A4F] transition-colors appearance-none cursor-pointer"
-            >
-              <option value="" disabled>
-                Select a size
-              </option>
-              {SHIRT_SIZES.map((size) => (
-                <option key={size} value={size}>
-                  {size}
+            {/* Shirt Size */}
+            <div>
+              <label
+                htmlFor="shirtSize"
+                className="block text-[#E84A8A] text-xs tracking-[0.2em] uppercase mb-2"
+              >
+                Shirt Size
+              </label>
+              <select
+                id="shirtSize"
+                required
+                value={formData.shirtSize}
+                onChange={(e) => setFormData({ ...formData, shirtSize: e.target.value })}
+                className="w-full bg-[#0F2438] border-2 border-[#6CB4EE]/30 text-[#F5E6D3] px-4 py-3 text-base focus:outline-none focus:border-[#E84A8A] transition-colors appearance-none cursor-pointer"
+              >
+                <option value="" disabled>
+                  Select a size
                 </option>
-              ))}
-            </select>
-          </div>
+                {SHIRT_SIZES.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* Notes */}
-          <div>
-            <label
-              htmlFor="notes"
-              className="block text-[#E85A4F] text-xs tracking-[0.2em] uppercase mb-2"
+            {/* Notes */}
+            <div>
+              <label
+                htmlFor="notes"
+                className="block text-[#E84A8A] text-xs tracking-[0.2em] uppercase mb-2"
+              >
+                Notes
+              </label>
+              <textarea
+                id="notes"
+                value={formData.notes}
+                onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                rows={4}
+                className="w-full bg-[#0F2438]/50 border-2 border-[#6CB4EE]/30 text-[#F5E6D3] px-4 py-3 text-base focus:outline-none focus:border-[#E84A8A] transition-colors resize-none"
+                placeholder="Any additional notes (optional)"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full psychedelic-button border-2 border-[#E84A8A] text-[#E84A8A] py-4 text-sm tracking-[0.2em] uppercase hover:bg-[#E84A8A] hover:text-[#0F2438] transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-bold"
             >
-              Notes
-            </label>
-            <textarea
-              id="notes"
-              value={formData.notes}
-              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              rows={4}
-              className="w-full bg-transparent border border-[#EECEC6]/30 text-[#EECEC6] px-4 py-3 text-base focus:outline-none focus:border-[#E85A4F] transition-colors resize-none"
-              placeholder="Any additional notes (optional)"
-            />
+              {isSubmitting ? "Submitting..." : "Register Team"}
+            </button>
           </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full border border-[#E85A4F] text-[#E85A4F] py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#E85A4F] hover:text-[#0F0F0F] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? "Submitting..." : "Register Team"}
-          </button>
         </form>
+
+        {/* Dancing bears */}
+        <div className="flex gap-2 mt-10 text-lg">
+          {['🐻', '🐻', '🐻'].map((bear, i) => (
+            <span
+              key={i}
+              className="dance-hover cursor-default"
+              style={{
+                color: ['#E84A8A', '#6CB4EE', '#DAA520'][i]
+              }}
+            >
+              {bear}
+            </span>
+          ))}
+        </div>
+
+        {/* Decorative bottom */}
+        <div className="mt-8 text-[#C41E3A] text-lg tracking-[0.5em] opacity-60">
+          ✿ ❀ ✿
+        </div>
       </main>
     </div>
   );

@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0F0F0F;
-  --foreground: #EECEC6;
-  --accent: #E85A4F;
-  --accent-secondary: #8BB7E8;
+  /* Psychedelic color palette inspired by 60s concert posters */
+  --background: #1A3A5C;
+  --background-dark: #0F2438;
+  --foreground: #F5E6D3;
+  --accent: #E84A8A;
+  --accent-secondary: #6CB4EE;
+  --rose-red: #C41E3A;
+  --gold: #DAA520;
 }
 
 @theme inline {
@@ -17,4 +21,378 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Psychedelic tie-dye animated background */
+.psychedelic-bg {
+  background:
+    radial-gradient(ellipse at 0% 0%, #8B1E3F 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%, #3D1E8B 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, #1E6B8B 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, #8B6B1E 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, #4A1E6B 0%, transparent 60%),
+    linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%, 100% 100%;
+  animation: tiedye 20s ease-in-out infinite;
+  position: relative;
+}
+
+.psychedelic-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(232, 74, 138, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(108, 180, 238, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(196, 30, 58, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 60% 60%, rgba(218, 165, 32, 0.2) 0%, transparent 30%);
+  background-size: 150% 150%;
+  animation: tiedyeOverlay 15s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Lava lamp blobs - rising from bottom to top */
+.lava-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(15px);
+  pointer-events: none;
+  z-index: 0;
+  animation: rise linear infinite;
+}
+
+.lava-blob-1 {
+  width: 150px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(232, 74, 138, 0.8) 0%, rgba(232, 74, 138, 0.3) 50%, transparent 70%);
+  left: 10%;
+  animation-duration: 18s;
+  animation-delay: 0s;
+}
+
+.lava-blob-2 {
+  width: 120px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(108, 180, 238, 0.8) 0%, rgba(108, 180, 238, 0.3) 50%, transparent 70%);
+  left: 80%;
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+.lava-blob-3 {
+  width: 180px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(218, 165, 32, 0.75) 0%, rgba(218, 165, 32, 0.3) 50%, transparent 70%);
+  left: 45%;
+  animation-duration: 20s;
+  animation-delay: -10s;
+}
+
+.lava-blob-4 {
+  width: 100px;
+  height: 160px;
+  background: radial-gradient(ellipse, rgba(138, 43, 226, 0.8) 0%, rgba(138, 43, 226, 0.3) 50%, transparent 70%);
+  left: 25%;
+  animation-duration: 25s;
+  animation-delay: -3s;
+}
+
+.lava-blob-5 {
+  width: 140px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(196, 30, 58, 0.75) 0%, rgba(196, 30, 58, 0.3) 50%, transparent 70%);
+  left: 65%;
+  animation-duration: 19s;
+  animation-delay: -8s;
+}
+
+.lava-blob-6 {
+  width: 110px;
+  height: 170px;
+  background: radial-gradient(ellipse, rgba(64, 224, 208, 0.7) 0%, rgba(64, 224, 208, 0.3) 50%, transparent 70%);
+  left: 90%;
+  animation-duration: 24s;
+  animation-delay: -15s;
+}
+
+.lava-blob-7 {
+  width: 160px;
+  height: 220px;
+  background: radial-gradient(ellipse, rgba(255, 105, 180, 0.75) 0%, rgba(255, 105, 180, 0.3) 50%, transparent 70%);
+  left: 5%;
+  animation-duration: 21s;
+  animation-delay: -12s;
+}
+
+.lava-blob-8 {
+  width: 130px;
+  height: 190px;
+  background: radial-gradient(ellipse, rgba(50, 205, 50, 0.7) 0%, rgba(50, 205, 50, 0.3) 50%, transparent 70%);
+  left: 55%;
+  animation-duration: 23s;
+  animation-delay: -7s;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -20%;
+    transform: translateX(0) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(10px) scale(1);
+  }
+  30% {
+    transform: translateX(-15px) scale(1.1);
+  }
+  50% {
+    transform: translateX(20px) scale(0.9);
+  }
+  70% {
+    transform: translateX(-10px) scale(1.05);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(5px) scale(1);
+  }
+  100% {
+    bottom: 110%;
+    transform: translateX(0) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.psychedelic-bg > main {
+  position: relative;
+  z-index: 1;
+}
+
+.psychedelic-bg::after {
+  display: none;
+}
+
+@keyframes tiedye {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 50%, 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 100%, 0% 0%, 100% 0%, 50% 50%, 0% 0%;
+  }
+  75% {
+    background-position: 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 50%, 0% 0%;
+  }
+}
+
+@keyframes tiedyeOverlay {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0%;
+  }
+  33% {
+    background-position: 100% 100%, 0% 0%, 100% 0%, 0% 100%;
+  }
+  66% {
+    background-position: 50% 100%, 50% 0%, 0% 50%, 100% 50%;
+  }
+}
+
+/* Decorative border inspired by concert posters */
+.poster-border {
+  position: relative;
+}
+
+.poster-border::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 3px solid var(--accent);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.poster-border::after {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid var(--accent-secondary);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Wavy text animation */
+.wavy-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    var(--gold) 25%,
+    var(--accent) 50%,
+    var(--rose-red) 75%,
+    var(--accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+/* Glow effect for headers */
+.psychedelic-glow {
+  text-shadow:
+    0 0 10px rgba(232, 74, 138, 0.5),
+    0 0 20px rgba(232, 74, 138, 0.3),
+    0 0 40px rgba(232, 74, 138, 0.2);
+}
+
+/* Rose decoration styling */
+.rose-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rose-divider::before,
+.rose-divider::after {
+  content: '✿';
+  color: var(--rose-red);
+  font-size: 1.5rem;
+}
+
+/* Skeleton/roses decorative corner elements */
+.corner-roses {
+  position: relative;
+}
+
+.corner-roses::before {
+  content: '❀ ✿ ❀';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--rose-red);
+  font-size: 1.25rem;
+  letter-spacing: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Ribbon banner effect */
+.ribbon-banner {
+  position: relative;
+  background: var(--accent);
+  padding: 0.75rem 2rem;
+  clip-path: polygon(
+    0% 0%,
+    5% 50%,
+    0% 100%,
+    100% 100%,
+    95% 50%,
+    100% 0%
+  );
+}
+
+/* Dancing bears-style hover effect */
+.dance-hover {
+  transition: transform 0.3s ease;
+}
+
+.dance-hover:hover {
+  animation: dance 0.5s ease-in-out;
+}
+
+@keyframes dance {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(-2deg); }
+  75% { transform: translateY(-4px) rotate(2deg); }
+}
+
+/* Steal Your Face inspired circle decoration */
+.syf-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.syf-circle::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 2rem);
+  height: calc(100% + 2rem);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+/* Input focus glow */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(232, 74, 138, 0.3);
+}
+
+/* Button psychedelic hover */
+.psychedelic-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.psychedelic-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.psychedelic-button:hover::before {
+  transform: translateX(100%);
+}
+
+/* Ornate frame for sections */
+.ornate-frame {
+  border: 2px solid var(--accent);
+  padding: 2rem;
+  position: relative;
+  background: rgba(15, 36, 56, 0.5);
+}
+
+.ornate-frame::before,
+.ornate-frame::after {
+  content: '◈';
+  position: absolute;
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.ornate-frame::before {
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ornate-frame::after {
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
