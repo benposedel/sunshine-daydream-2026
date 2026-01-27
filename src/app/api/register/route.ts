@@ -33,10 +33,15 @@ export async function POST(request: Request) {
         shirtSize,
         notes: notes || "",
       }),
+      redirect: "follow",
     });
 
+    const responseText = await response.text();
+    console.log("Google Script response:", response.status, responseText);
+
     if (!response.ok) {
-      throw new Error("Failed to submit to Google Sheets");
+      console.error("Google Script error:", response.status, responseText);
+      throw new Error(`Failed to submit to Google Sheets: ${response.status} ${responseText}`);
     }
 
     return NextResponse.json({ success: true });
