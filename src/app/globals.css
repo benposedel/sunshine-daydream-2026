@@ -1,37 +1,55 @@
 @import "tailwindcss";
 
 :root {
-  /* Psychedelic color palette inspired by 60s concert posters */
-  --background: #1A3A5C;
-  --background-dark: #0F2438;
+  /* ── New color palette ── */
+  --deep-indigo: #1a1a2e;
+  --rich-black: #0d0d0d;
+  --sunset-orange: #FF6B35;
+  --golden-yellow: #FFD700;
+  --electric-teal: #00CED1;
+  --rose-magenta: #FF1493;
+  --grateful-red: #E63946;
   --foreground: #F5E6D3;
-  --accent: #E84A8A;
-  --accent-secondary: #6CB4EE;
-  --rose-red: #C41E3A;
-  --gold: #DAA520;
+
+  /* ── Legacy palette mapping ── */
+  --background: #1a1a2e;
+  --background-dark: #0d0d0d;
+  --accent: #FF1493;
+  --accent-secondary: #00CED1;
+  --rose-red: #E63946;
+  --gold: #FFD700;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--deep-indigo);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-deep-indigo: var(--deep-indigo);
+  --color-rich-black: var(--rich-black);
+  --color-sunset-orange: var(--sunset-orange);
+  --color-golden-yellow: var(--golden-yellow);
+  --color-electric-teal: var(--electric-teal);
+  --color-rose-magenta: var(--rose-magenta);
+  --color-grateful-red: var(--grateful-red);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--background);
+  background: var(--rich-black);
   color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
-/* Psychedelic tie-dye animated background */
+/* ── Psychedelic tie-dye animated background ── */
 .psychedelic-bg {
   background:
-    radial-gradient(ellipse at 0% 0%, #8B1E3F 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 0%, #3D1E8B 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 100%, #1E6B8B 0%, transparent 50%),
-    radial-gradient(ellipse at 0% 100%, #8B6B1E 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, #4A1E6B 0%, transparent 60%),
-    linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+    radial-gradient(ellipse at 0% 0%, rgba(230, 57, 70, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%, rgba(0, 206, 209, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 20, 147, 0.2) 0%, transparent 60%),
+    linear-gradient(135deg, #1a1a2e 0%, #16213E 50%, #0d0d0d 100%);
   background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%, 100% 100%;
   animation: tiedye 20s ease-in-out infinite;
   position: relative;
@@ -42,17 +60,17 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 80%, rgba(232, 74, 138, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 80% 20%, rgba(108, 180, 238, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 40% 40%, rgba(196, 30, 58, 0.2) 0%, transparent 30%),
-    radial-gradient(circle at 60% 60%, rgba(218, 165, 32, 0.2) 0%, transparent 30%);
+    radial-gradient(circle at 20% 80%, rgba(255, 20, 147, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(0, 206, 209, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(230, 57, 70, 0.15) 0%, transparent 30%),
+    radial-gradient(circle at 60% 60%, rgba(255, 215, 0, 0.15) 0%, transparent 30%);
   background-size: 150% 150%;
   animation: tiedyeOverlay 15s ease-in-out infinite reverse;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Lava lamp blobs - rising from bottom to top */
+/* ── Lava lamp blobs ── */
 .lava-blob {
   position: fixed;
   border-radius: 50%;
@@ -65,7 +83,7 @@ body {
 .lava-blob-1 {
   width: 150px;
   height: 200px;
-  background: radial-gradient(ellipse, rgba(232, 74, 138, 0.8) 0%, rgba(232, 74, 138, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 20, 147, 0.6) 0%, rgba(255, 20, 147, 0.2) 50%, transparent 70%);
   left: 10%;
   animation-duration: 18s;
   animation-delay: 0s;
@@ -74,7 +92,7 @@ body {
 .lava-blob-2 {
   width: 120px;
   height: 180px;
-  background: radial-gradient(ellipse, rgba(108, 180, 238, 0.8) 0%, rgba(108, 180, 238, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0, 206, 209, 0.6) 0%, rgba(0, 206, 209, 0.2) 50%, transparent 70%);
   left: 80%;
   animation-duration: 22s;
   animation-delay: -5s;
@@ -83,7 +101,7 @@ body {
 .lava-blob-3 {
   width: 180px;
   height: 250px;
-  background: radial-gradient(ellipse, rgba(218, 165, 32, 0.75) 0%, rgba(218, 165, 32, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 215, 0, 0.5) 0%, rgba(255, 215, 0, 0.2) 50%, transparent 70%);
   left: 45%;
   animation-duration: 20s;
   animation-delay: -10s;
@@ -92,7 +110,7 @@ body {
 .lava-blob-4 {
   width: 100px;
   height: 160px;
-  background: radial-gradient(ellipse, rgba(138, 43, 226, 0.8) 0%, rgba(138, 43, 226, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 107, 53, 0.6) 0%, rgba(255, 107, 53, 0.2) 50%, transparent 70%);
   left: 25%;
   animation-duration: 25s;
   animation-delay: -3s;
@@ -101,7 +119,7 @@ body {
 .lava-blob-5 {
   width: 140px;
   height: 200px;
-  background: radial-gradient(ellipse, rgba(196, 30, 58, 0.75) 0%, rgba(196, 30, 58, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(230, 57, 70, 0.5) 0%, rgba(230, 57, 70, 0.2) 50%, transparent 70%);
   left: 65%;
   animation-duration: 19s;
   animation-delay: -8s;
@@ -110,7 +128,7 @@ body {
 .lava-blob-6 {
   width: 110px;
   height: 170px;
-  background: radial-gradient(ellipse, rgba(64, 224, 208, 0.7) 0%, rgba(64, 224, 208, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0, 206, 209, 0.5) 0%, rgba(0, 206, 209, 0.2) 50%, transparent 70%);
   left: 90%;
   animation-duration: 24s;
   animation-delay: -15s;
@@ -119,7 +137,7 @@ body {
 .lava-blob-7 {
   width: 160px;
   height: 220px;
-  background: radial-gradient(ellipse, rgba(255, 105, 180, 0.75) 0%, rgba(255, 105, 180, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 20, 147, 0.5) 0%, rgba(255, 20, 147, 0.2) 50%, transparent 70%);
   left: 5%;
   animation-duration: 21s;
   animation-delay: -12s;
@@ -128,7 +146,7 @@ body {
 .lava-blob-8 {
   width: 130px;
   height: 190px;
-  background: radial-gradient(ellipse, rgba(50, 205, 50, 0.7) 0%, rgba(50, 205, 50, 0.3) 50%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.15) 50%, transparent 70%);
   left: 55%;
   animation-duration: 23s;
   animation-delay: -7s;
@@ -164,15 +182,6 @@ body {
   }
 }
 
-.psychedelic-bg > main {
-  position: relative;
-  z-index: 1;
-}
-
-.psychedelic-bg::after {
-  display: none;
-}
-
 @keyframes tiedye {
   0%, 100% {
     background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 0% 0%;
@@ -200,7 +209,7 @@ body {
   }
 }
 
-/* Decorative border inspired by concert posters */
+/* ── Poster border ── */
 .poster-border {
   position: relative;
 }
@@ -223,15 +232,15 @@ body {
   pointer-events: none;
 }
 
-/* Wavy text animation */
+/* ── Wavy text animation ── */
 .wavy-text {
   background: linear-gradient(
     90deg,
-    var(--accent) 0%,
-    var(--gold) 25%,
-    var(--accent) 50%,
-    var(--rose-red) 75%,
-    var(--accent) 100%
+    var(--sunset-orange) 0%,
+    var(--golden-yellow) 25%,
+    var(--rose-magenta) 50%,
+    var(--electric-teal) 75%,
+    var(--sunset-orange) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -244,15 +253,15 @@ body {
   to { background-position: 200% center; }
 }
 
-/* Glow effect for headers */
+/* ── Psychedelic glow ── */
 .psychedelic-glow {
   text-shadow:
-    0 0 10px rgba(232, 74, 138, 0.5),
-    0 0 20px rgba(232, 74, 138, 0.3),
-    0 0 40px rgba(232, 74, 138, 0.2);
+    0 0 10px rgba(255, 20, 147, 0.5),
+    0 0 20px rgba(255, 20, 147, 0.3),
+    0 0 40px rgba(255, 20, 147, 0.2);
 }
 
-/* Rose decoration styling */
+/* ── Rose divider ── */
 .rose-divider {
   position: relative;
   display: flex;
@@ -263,18 +272,18 @@ body {
 
 .rose-divider::before,
 .rose-divider::after {
-  content: '✿';
+  content: '\2767';
   color: var(--rose-red);
   font-size: 1.5rem;
 }
 
-/* Skeleton/roses decorative corner elements */
+/* ── Corner roses ── */
 .corner-roses {
   position: relative;
 }
 
 .corner-roses::before {
-  content: '❀ ✿ ❀';
+  content: '\2740 \2767 \2740';
   position: absolute;
   top: -2rem;
   left: 50%;
@@ -285,10 +294,10 @@ body {
   opacity: 0.8;
 }
 
-/* Ribbon banner effect */
+/* ── Ribbon banner ── */
 .ribbon-banner {
   position: relative;
-  background: var(--accent);
+  background: var(--sunset-orange);
   padding: 0.75rem 2rem;
   clip-path: polygon(
     0% 0%,
@@ -300,7 +309,7 @@ body {
   );
 }
 
-/* Dancing bears-style hover effect */
+/* ── Dance hover ── */
 .dance-hover {
   transition: transform 0.3s ease;
 }
@@ -315,7 +324,7 @@ body {
   75% { transform: translateY(-4px) rotate(2deg); }
 }
 
-/* Steal Your Face inspired circle decoration */
+/* ── Steal Your Face circle ── */
 .syf-circle {
   position: relative;
   display: inline-flex;
@@ -338,14 +347,36 @@ body {
   50% { transform: scale(1.05); opacity: 0.7; }
 }
 
-/* Input focus glow */
-input:focus,
-select:focus,
-textarea:focus {
-  box-shadow: 0 0 0 2px rgba(232, 74, 138, 0.3);
+/* ── Ornate frame ── */
+.ornate-frame {
+  border: 2px solid var(--accent);
+  padding: 2rem;
+  position: relative;
+  background: rgba(13, 13, 13, 0.5);
+  border-radius: 8px;
 }
 
-/* Button psychedelic hover */
+.ornate-frame::before,
+.ornate-frame::after {
+  content: '\25C8';
+  position: absolute;
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+.ornate-frame::before {
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ornate-frame::after {
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Psychedelic button ── */
 .psychedelic-button {
   position: relative;
   overflow: hidden;
@@ -369,30 +400,71 @@ textarea:focus {
   transform: translateX(100%);
 }
 
-/* Ornate frame for sections */
-.ornate-frame {
-  border: 2px solid var(--accent);
-  padding: 2rem;
-  position: relative;
-  background: rgba(15, 36, 56, 0.5);
+/* ── Glassmorphic card ── */
+.glass-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
-.ornate-frame::before,
-.ornate-frame::after {
-  content: '◈';
-  position: absolute;
-  color: var(--gold);
-  font-size: 1.5rem;
+/* ── Noise texture overlay ── */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
 }
 
-.ornate-frame::before {
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
+/* ── Skeleton loader ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 8px;
 }
 
-.ornate-frame::after {
-  bottom: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Score colors ── */
+.score-under-par {
+  color: var(--grateful-red);
+  font-weight: 700;
+}
+
+.score-even {
+  color: var(--foreground);
+}
+
+.score-over-par {
+  color: var(--foreground);
+  opacity: 0.7;
+}
+
+/* ── Input focus glow ── */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.3);
+}
+
+/* ── Gradient text utility ── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--sunset-orange), var(--golden-yellow), var(--rose-magenta));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

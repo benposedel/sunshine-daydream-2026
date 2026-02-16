@@ -1,50 +1,47 @@
 import { NextResponse } from "next/server";
+import { supabase } from "@/lib/supabase";
+import type { RegistrationPayload } from "@/types";
+import { SHIRT_SIZES } from "@/types";
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
-    const { playerName, partnerName, shirtSize, notes } = body;
+    const body: RegistrationPayload = await request.json();
+    const { player_name, partner_name, shirt_size, notes } = body;
 
-    // Validate required fields
-    if (!playerName || !partnerName || !shirtSize) {
+    if (!player_name || !partner_name || !shirt_size) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
-
-    if (!GOOGLE_SCRIPT_URL) {
-      console.error("GOOGLE_SCRIPT_URL not configured");
+    if (!SHIRT_SIZES.includes(shirt_size)) {
       return NextResponse.json(
-        { error: "Server configuration error" },
+        { error: "Invalid shirt size" },
+        { status: 400 }
+      );
+    }
+
+    const { data, error } = await supabase
+      .from("teams")
+      .insert({
+        player_name,
+        partner_name,
+        shirt_size,
+        notes: notes || null,
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return NextResponse.json(
+        { error: "Failed to register team" },
         { status: 500 }
       );
     }
 
-    // Send to Google Apps Script
-    const response = await fetch(GOOGLE_SCRIPT_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        playerName,
-        partnerName,
-        shirtSize,
-        notes: notes || "",
-      }),
-      redirect: "follow",
-    });
-
-    const responseText = await response.text();
-    console.log("Google Script response:", response.status, responseText);
-
-    if (!response.ok) {
-      console.error("Google Script error:", response.status, responseText);
-      throw new Error(`Failed to submit to Google Sheets: ${response.status} ${responseText}`);
-    }
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, team: data });
   } catch (error) {
     console.error("Registration error:", error);
     return NextResponse.json(
