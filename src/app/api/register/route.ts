@@ -66,7 +66,7 @@ export async function POST(request: Request) {
     if (error) {
       console.error("Supabase insert error:", error);
       return NextResponse.json(
-        { error: "Failed to register team" },
+        { error: `Failed to register team: ${error.message}` },
         { status: 500 }
       );
     }
@@ -74,8 +74,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, team: data });
   } catch (error) {
     console.error("Registration error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Failed to submit registration" },
+      { error: `Failed to submit registration: ${message}` },
       { status: 500 }
     );
   }
