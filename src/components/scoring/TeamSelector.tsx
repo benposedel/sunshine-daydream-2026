@@ -30,13 +30,13 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
     const teamName = t.team_name || "";
     return (
       teamName.toLowerCase().includes(term) ||
-      t.player_name.toLowerCase().includes(term) ||
-      t.partner_name.toLowerCase().includes(term)
+      t.player1_name.toLowerCase().includes(term) ||
+      t.player2_name.toLowerCase().includes(term)
     );
   });
 
   function getDisplayName(team: Team): string {
-    return team.team_name || `${team.player_name} & ${team.partner_name}`;
+    return team.team_name || `${team.player1_name} & ${team.player2_name}`;
   }
 
   function handleSelect(team: Team) {
@@ -94,7 +94,7 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
             </p>
             {team.team_name && (
               <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] mt-1">
-                {team.player_name} & {team.partner_name}
+                {team.player1_name} & {team.player2_name}
               </p>
             )}
           </motion.button>

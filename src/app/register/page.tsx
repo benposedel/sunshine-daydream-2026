@@ -75,8 +75,8 @@ export default function Register() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           team_name: formData.teamName.trim(),
-          player_name: formData.playerName.trim(),
-          partner_name: formData.partnerName.trim(),
+          player1_name: formData.playerName.trim(),
+          player2_name: formData.partnerName.trim(),
           player_pin: formData.playerPin,
           partner_pin: formData.partnerPin || "",
           shirt_size: formData.shirtSize,
@@ -487,7 +487,7 @@ function SetPinForm() {
               <option value="">Select your team</option>
               {teams.map((t) => (
                 <option key={t.id} value={t.id}>
-                  {t.team_name || `${t.player_name} & ${t.partner_name}`}
+                  {t.team_name || `${t.player1_name} & ${t.player2_name}`}
                 </option>
               ))}
             </select>

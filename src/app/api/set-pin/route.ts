@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     // Fetch team to match player name
     const { data: team, error } = await supabase
       .from("teams")
-      .select("player_name, partner_name")
+      .select("player1_name, player2_name")
       .eq("id", team_id)
       .single();
 
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     const pinHash = await hashPin(pin);
     const nameLower = player_name.trim().toLowerCase();
 
-    if (team.player_name.toLowerCase() === nameLower) {
+    if (team.player1_name.toLowerCase() === nameLower) {
       await supabase
         .from("teams")
         .update({ player1_pin_hash: pinHash })
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true });
     }
 
-    if (team.partner_name.toLowerCase() === nameLower) {
+    if (team.player2_name.toLowerCase() === nameLower) {
       await supabase
         .from("teams")
         .update({ player2_pin_hash: pinHash })

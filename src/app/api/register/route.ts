@@ -7,9 +7,9 @@ import { SHIRT_SIZES } from "@/types";
 export async function POST(request: Request) {
   try {
     const body: RegistrationPayload = await request.json();
-    const { team_name, player_name, partner_name, player_pin, partner_pin, shirt_size, notes } = body;
+    const { team_name, player1_name, player2_name, player_pin, partner_pin, shirt_size, notes } = body;
 
-    if (!team_name || !player_name || !partner_name || !shirt_size || !player_pin) {
+    if (!team_name || !player1_name || !player2_name || !shirt_size || !player_pin) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -53,8 +53,8 @@ export async function POST(request: Request) {
       .from("teams")
       .insert({
         team_name,
-        player_name,
-        partner_name,
+        player1_name,
+        player2_name,
         player1_pin_hash,
         player2_pin_hash,
         shirt_size,

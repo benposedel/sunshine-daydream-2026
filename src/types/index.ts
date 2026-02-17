@@ -3,11 +3,11 @@
 export interface Team {
   id: string;
   team_name: string | null;
-  player_name: string;
-  partner_name: string;
+  player1_name: string;
+  player2_name: string;
   player1_pin_hash: string | null;
   player2_pin_hash: string | null;
-  shirt_size: ShirtSize;
+  shirt_size: ShirtSize | null;
   notes: string | null;
   created_at: string;
 }
@@ -75,8 +75,8 @@ export interface RegistrationFormData {
 
 export interface RegistrationPayload {
   team_name: string;
-  player_name: string;
-  partner_name: string;
+  player1_name: string;
+  player2_name: string;
   player_pin: string;
   partner_pin: string;
   shirt_size: ShirtSize;
