@@ -2,8 +2,11 @@
 
 export interface Team {
   id: string;
+  team_name: string | null;
   player_name: string;
   partner_name: string;
+  player1_pin_hash: string | null;
+  player2_pin_hash: string | null;
   shirt_size: ShirtSize;
   notes: string | null;
   created_at: string;
@@ -42,6 +45,7 @@ export interface LeaderboardEntry {
   tied: boolean;
   team_id: string;
   team_name: string;
+  player_names: string;
   score_to_par: number;
   total_strokes: number;
   holes_completed: number;
@@ -58,15 +62,36 @@ export interface WeatherData {
 // ── Form Types ──────────────────────────────────────────────
 
 export interface RegistrationFormData {
+  teamName: string;
   playerName: string;
+  playerPin: string;
+  playerPinConfirm: string;
   partnerName: string;
+  partnerPin: string;
+  partnerPinConfirm: string;
   shirtSize: ShirtSize | "";
   notes: string;
 }
 
 export interface RegistrationPayload {
+  team_name: string;
   player_name: string;
   partner_name: string;
+  player_pin: string;
+  partner_pin: string;
   shirt_size: ShirtSize;
   notes: string;
+}
+
+// ── PIN Types ──────────────────────────────────────────────
+
+export interface VerifyPinPayload {
+  team_id: string;
+  pin: string;
+}
+
+export interface SetPinPayload {
+  team_id: string;
+  player_name: string;
+  pin: string;
 }

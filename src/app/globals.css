@@ -460,6 +460,15 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(255, 20, 147, 0.3);
 }
 
+/* ── Shake animation (PIN error) ── */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
 /* ── Gradient text utility ── */
 .gradient-text {
   background: linear-gradient(135deg, var(--sunset-orange), var(--golden-yellow), var(--rose-magenta));

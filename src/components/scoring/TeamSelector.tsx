@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase";
 import type { Team } from "@/types";
 
 interface TeamSelectorProps {
-  onSelect: (teamId: string) => void;
+  onSelect: (teamId: string, teamName: string) => void;
 }
 
 export function TeamSelector({ onSelect }: TeamSelectorProps) {
@@ -25,24 +25,22 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
       });
   }, []);
 
-  // Check localStorage for previously selected team
-  useEffect(() => {
-    const saved = localStorage.getItem("scoring_team_id");
-    if (saved) onSelect(saved);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const filtered = teams.filter((t) => {
     const term = search.toLowerCase();
+    const teamName = t.team_name || "";
     return (
+      teamName.toLowerCase().includes(term) ||
       t.player_name.toLowerCase().includes(term) ||
       t.partner_name.toLowerCase().includes(term)
     );
   });
 
-  function handleSelect(teamId: string) {
-    localStorage.setItem("scoring_team_id", teamId);
-    onSelect(teamId);
+  function getDisplayName(team: Team): string {
+    return team.team_name || `${team.player_name} & ${team.partner_name}`;
+  }
+
+  function handleSelect(team: Team) {
+    onSelect(team.id, getDisplayName(team));
   }
 
   if (isLoading) {
@@ -88,12 +86,17 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
-            onClick={() => handleSelect(team.id)}
+            onClick={() => handleSelect(team)}
             className="w-full glass-card p-4 text-left hover:border-sunset-orange/40 transition-colors cursor-pointer"
           >
             <p className="text-foreground font-bold font-[family-name:var(--font-heading)]">
-              {team.player_name} & {team.partner_name}
+              {getDisplayName(team)}
             </p>
+            {team.team_name && (
+              <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] mt-1">
+                {team.player_name} & {team.partner_name}
+              </p>
+            )}
           </motion.button>
         ))}
       </div>

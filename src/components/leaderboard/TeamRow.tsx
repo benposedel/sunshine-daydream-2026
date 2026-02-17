@@ -69,13 +69,18 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
       </div>
 
       {/* Expanded scorecard */}
-      {expanded && teamScores.length > 0 && (
+      {expanded && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           className="mt-3"
         >
-          <TeamScorecard scores={teamScores} />
+          {entry.player_names && (
+            <p className="text-foreground/50 text-xs font-[family-name:var(--font-body)] mb-2">
+              {entry.player_names}
+            </p>
+          )}
+          {teamScores.length > 0 && <TeamScorecard scores={teamScores} />}
         </motion.div>
       )}
     </motion.div>
