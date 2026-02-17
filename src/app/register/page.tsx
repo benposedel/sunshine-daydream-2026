@@ -45,18 +45,6 @@ export default function Register() {
       newErrors.playerPinConfirm = "PINs don't match";
     }
 
-    // Partner PIN (optional, but validate if entered)
-    if (formData.partnerPin) {
-      if (!/^\d{4}$/.test(formData.partnerPin)) {
-        newErrors.partnerPin = "PIN must be exactly 4 digits";
-      } else if (formData.partnerPin === "1234") {
-        newErrors.partnerPin = "This PIN is reserved, please choose a different one.";
-      }
-      if (formData.partnerPin !== formData.partnerPinConfirm) {
-        newErrors.partnerPinConfirm = "PINs don't match";
-      }
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
@@ -78,7 +66,7 @@ export default function Register() {
           player1_name: formData.playerName.trim(),
           player2_name: formData.partnerName.trim(),
           player_pin: formData.playerPin,
-          partner_pin: formData.partnerPin || "",
+          partner_pin: "",
           shirt_size: formData.shirtSize,
           notes: formData.notes.trim(),
         }),
@@ -168,7 +156,7 @@ export default function Register() {
                 {/* Venmo Payment */}
                 <div className="border-t border-foreground/10 pt-6 mt-6">
                   <p className="text-xs tracking-[0.2em] uppercase text-foreground/40 mb-3 font-[family-name:var(--font-heading)]">
-                    Tournament Fee &mdash; $60 per team
+                    Tournament Fee &mdash; $60 per player
                   </p>
                   <a
                     href="https://venmo.com/u/Ben-Posedel?txn=pay&amount=60&note=Sunshine%20Daydream%202026"
@@ -252,27 +240,6 @@ export default function Register() {
                     onChange={(v) => { setFormData({ ...formData, partnerName: v }); clearError("partnerName"); }}
                     placeholder="Your partner's name"
                   />
-
-                  {/* Partner PIN (optional) */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <FormField label="Partner's PIN" id="partnerPin" error={errors.partnerPin}
-                      value={formData.partnerPin}
-                      onChange={(v) => { setFormData({ ...formData, partnerPin: v.replace(/\D/g, "").slice(0, 4) }); clearError("partnerPin"); }}
-                      placeholder="Optional" inputMode="numeric" maxLength={4}
-                    />
-                    {formData.partnerPin && (
-                      <FormField label="Confirm PIN" id="partnerPinConfirm" error={errors.partnerPinConfirm}
-                        value={formData.partnerPinConfirm}
-                        onChange={(v) => { setFormData({ ...formData, partnerPinConfirm: v.replace(/\D/g, "").slice(0, 4) }); clearError("partnerPinConfirm"); }}
-                        placeholder="0000" inputMode="numeric" maxLength={4}
-                      />
-                    )}
-                  </div>
-
-                  {/* PIN info note */}
-                  <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] -mt-2">
-                    Each player gets their own PIN for entering scores on tournament day. Remember yours!
-                  </p>
 
                   {/* Divider */}
                   <div className="border-t border-foreground/10 pt-4" />
