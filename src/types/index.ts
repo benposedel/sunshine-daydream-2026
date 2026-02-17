@@ -64,11 +64,11 @@ export interface WeatherData {
 export interface RegistrationFormData {
   teamName: string;
   playerName: string;
+  playerEmail: string;
+  playerPhone: string;
   playerPin: string;
   playerPinConfirm: string;
   partnerName: string;
-  partnerPin: string;
-  partnerPinConfirm: string;
   shirtSize: ShirtSize | "";
   notes: string;
 }
@@ -77,6 +77,8 @@ export interface RegistrationPayload {
   team_name: string;
   player1_name: string;
   player2_name: string;
+  email: string;
+  phone: string;
   player_pin: string;
   partner_pin: string;
   shirt_size: ShirtSize;

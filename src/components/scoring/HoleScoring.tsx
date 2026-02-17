@@ -38,9 +38,16 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
     submitScore(currentHole, newStrokes);
   }
 
-  function goToHole(hole: number) {
-    if (hole >= 1 && hole <= COURSE_HOLES_COUNT) {
-      setCurrentHole(hole);
+  function submitCurrentIfNeeded() {
+    if (currentStrokes === null) {
+      submitScore(currentHole, hole.par);
+    }
+  }
+
+  function goToHole(nextHole: number) {
+    if (nextHole >= 1 && nextHole <= COURSE_HOLES_COUNT) {
+      submitCurrentIfNeeded();
+      setCurrentHole(nextHole);
       setShowSummary(false);
     }
   }
@@ -194,10 +201,10 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
           </button>
         ) : (
           <button
-            onClick={() => setShowSummary(true)}
+            onClick={() => { submitCurrentIfNeeded(); setShowSummary(true); }}
             className="flex-1 py-3 bg-golden-yellow text-rich-black text-sm font-[family-name:var(--font-heading)] font-bold uppercase tracking-wider rounded-lg hover:bg-golden-yellow/90 transition-colors cursor-pointer"
           >
-            View Summary
+            Finish Round
           </button>
         )}
       </div>

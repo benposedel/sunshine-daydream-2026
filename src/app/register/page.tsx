@@ -1,22 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/Button";
-import { SHIRT_SIZES, type ShirtSize, type RegistrationFormData, type Team } from "@/types";
+import { SHIRT_SIZES, type ShirtSize, type RegistrationFormData } from "@/types";
 
 export default function Register() {
   const [formData, setFormData] = useState<RegistrationFormData>({
     teamName: "",
     playerName: "",
+    playerEmail: "",
+    playerPhone: "",
     playerPin: "",
     playerPinConfirm: "",
     partnerName: "",
-    partnerPin: "",
-    partnerPinConfirm: "",
     shirtSize: "",
     notes: "",
   });
@@ -24,12 +23,16 @@ export default function Register() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [submitError, setSubmitError] = useState("");
-  const [showSetPin, setShowSetPin] = useState(false);
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
     if (!formData.teamName.trim()) newErrors.teamName = "Team name is required";
     if (!formData.playerName.trim()) newErrors.playerName = "Player name is required";
+    if (!formData.playerEmail.trim()) newErrors.playerEmail = "Email is required";
+    if (formData.playerEmail.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.playerEmail.trim())) {
+      newErrors.playerEmail = "Enter a valid email address";
+    }
+    if (!formData.playerPhone.trim()) newErrors.playerPhone = "Phone number is required";
     if (!formData.partnerName.trim()) newErrors.partnerName = "Partner name is required";
     if (!formData.shirtSize) newErrors.shirtSize = "Please select a shirt size";
 
@@ -65,6 +68,8 @@ export default function Register() {
           team_name: formData.teamName.trim(),
           player1_name: formData.playerName.trim(),
           player2_name: formData.partnerName.trim(),
+          email: formData.playerEmail.trim(),
+          phone: formData.playerPhone.trim(),
           player_pin: formData.playerPin,
           partner_pin: "",
           shirt_size: formData.shirtSize,
@@ -77,9 +82,9 @@ export default function Register() {
       if (response.ok) {
         setSubmitStatus("success");
         setFormData({
-          teamName: "", playerName: "", playerPin: "", playerPinConfirm: "",
-          partnerName: "", partnerPin: "", partnerPinConfirm: "",
-          shirtSize: "", notes: "",
+          teamName: "", playerName: "", playerEmail: "", playerPhone: "",
+          playerPin: "", playerPinConfirm: "",
+          partnerName: "", shirtSize: "", notes: "",
         });
         setErrors({});
       } else {
@@ -213,6 +218,20 @@ export default function Register() {
                     placeholder="Your name"
                   />
 
+                  {/* Email */}
+                  <FormField label="Email" id="playerEmail" error={errors.playerEmail}
+                    value={formData.playerEmail}
+                    onChange={(v) => { setFormData({ ...formData, playerEmail: v }); clearError("playerEmail"); }}
+                    placeholder="your@email.com" inputType="email"
+                  />
+
+                  {/* Phone */}
+                  <FormField label="Phone Number" id="playerPhone" error={errors.playerPhone}
+                    value={formData.playerPhone}
+                    onChange={(v) => { setFormData({ ...formData, playerPhone: v }); clearError("playerPhone"); }}
+                    placeholder="(503) 555-1234" inputType="tel"
+                  />
+
                   {/* Player PIN */}
                   <div className="grid grid-cols-2 gap-3">
                     <FormField label="Your 4-Digit PIN" id="playerPin" error={errors.playerPin}
@@ -298,20 +317,6 @@ export default function Register() {
                 </div>
               </form>
 
-              {/* Set PIN link */}
-              <div className="text-center">
-                <button
-                  onClick={() => setShowSetPin(!showSetPin)}
-                  className="text-foreground/40 text-sm hover:text-electric-teal transition-colors font-[family-name:var(--font-body)] cursor-pointer underline underline-offset-4"
-                >
-                  Already registered? Set your PIN here
-                </button>
-              </div>
-
-              {/* Set PIN form */}
-              <AnimatePresence>
-                {showSetPin && <SetPinForm />}
-              </AnimatePresence>
             </motion.div>
           )}
         </AnimatePresence>
@@ -327,7 +332,7 @@ export default function Register() {
 
 // ── Reusable form field ──
 
-function FormField({ label, id, error, value, onChange, placeholder, inputMode, maxLength }: {
+function FormField({ label, id, error, value, onChange, placeholder, inputMode, inputType, maxLength }: {
   label: string;
   id: string;
   error?: string;
@@ -335,6 +340,7 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
   onChange: (value: string) => void;
   placeholder?: string;
   inputMode?: "text" | "numeric";
+  inputType?: "text" | "email" | "tel";
   maxLength?: number;
 }) {
   return (
@@ -343,7 +349,7 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
         {label}
       </label>
       <input
-        type="text"
+        type={inputType || "text"}
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -361,139 +367,3 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
   );
 }
 
-// ── Set PIN mini-form ──
-
-function SetPinForm() {
-  const [teams, setTeams] = useState<Team[]>([]);
-  const [selectedTeamId, setSelectedTeamId] = useState("");
-  const [playerName, setPlayerName] = useState("");
-  const [pin, setPin] = useState("");
-  const [pinConfirm, setPinConfirm] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    supabase
-      .from("teams")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .then(({ data }) => {
-        if (data) setTeams(data);
-      });
-  }, []);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-
-    if (!selectedTeamId || !playerName.trim() || !pin) {
-      setError("All fields are required");
-      return;
-    }
-    if (!/^\d{4}$/.test(pin)) {
-      setError("PIN must be exactly 4 digits");
-      return;
-    }
-    if (pin === "1234") {
-      setError("This PIN is reserved, please choose a different one.");
-      return;
-    }
-    if (pin !== pinConfirm) {
-      setError("PINs don't match");
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/api/set-pin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ team_id: selectedTeamId, player_name: playerName.trim(), pin }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setSuccess(true);
-      } else {
-        setError(data.error || "Failed to set PIN");
-      }
-    } catch {
-      setError("Something went wrong");
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      className="overflow-hidden"
-    >
-      <form onSubmit={handleSubmit} className="glass-card p-6 mt-6">
-        <h3 className="text-sm font-bold font-[family-name:var(--font-heading)] text-foreground mb-4">
-          Set Your PIN
-        </h3>
-
-        {success ? (
-          <p className="text-electric-teal text-sm font-[family-name:var(--font-body)]">
-            PIN set successfully!
-          </p>
-        ) : (
-          <div className="space-y-4">
-            {error && (
-              <p className="text-grateful-red text-xs font-[family-name:var(--font-body)]">{error}</p>
-            )}
-
-            <select
-              value={selectedTeamId}
-              onChange={(e) => setSelectedTeamId(e.target.value)}
-              className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors font-[family-name:var(--font-body)] appearance-none cursor-pointer"
-            >
-              <option value="">Select your team</option>
-              {teams.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.team_name || `${t.player1_name} & ${t.player2_name}`}
-                </option>
-              ))}
-            </select>
-
-            <input
-              type="text"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              placeholder="Your name (must match registration)"
-              className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors font-[family-name:var(--font-body)]"
-            />
-
-            <div className="grid grid-cols-2 gap-3">
-              <input
-                type="text"
-                value={pin}
-                onChange={(e) => setPin(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                inputMode="numeric"
-                maxLength={4}
-                placeholder="4-digit PIN"
-                className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors font-[family-name:var(--font-body)]"
-              />
-              <input
-                type="text"
-                value={pinConfirm}
-                onChange={(e) => setPinConfirm(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                inputMode="numeric"
-                maxLength={4}
-                placeholder="Confirm PIN"
-                className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors font-[family-name:var(--font-body)]"
-              />
-            </div>
-
-            <Button type="submit" variant="secondary" size="md" isLoading={isSubmitting} className="w-full">
-              Set PIN
-            </Button>
-          </div>
-        )}
-      </form>
-    </motion.div>
-  );
-}
