@@ -36,10 +36,14 @@ export const metadata: Metadata = {
   icons: {
     apple: "/icons/icon-192.png",
   },
+  other: {
+    "apple-touch-startup-image": "/splash/splash-1179x2556.png",
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#1a1a2e",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -47,6 +51,24 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        {/* iOS splash screens */}
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-1290x2796.png"
+          media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-1179x2556.png"
+          media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/splash/splash-750x1334.png"
+          media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        />
+      </head>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >

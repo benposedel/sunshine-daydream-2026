@@ -61,7 +61,7 @@ export default function ScoringPage() {
   }
 
   return (
-    <div className="min-h-screen psychedelic-bg noise-overlay">
+    <div className="min-h-screen psychedelic-bg noise-overlay scoring-page">
       <div className="lava-blob lava-blob-1" />
       <div className="lava-blob lava-blob-4" />
       <div className="lava-blob lava-blob-7" />

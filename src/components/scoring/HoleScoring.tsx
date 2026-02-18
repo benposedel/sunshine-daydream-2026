@@ -153,7 +153,7 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
           <button
             onClick={() => handleStrokeChange(displayStrokes - 1)}
             disabled={displayStrokes <= 1}
-            className="w-14 h-14 rounded-full bg-sunset-orange/20 text-sunset-orange text-2xl font-bold hover:bg-sunset-orange/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center"
+            className="scoring-button w-14 h-14 rounded-full bg-sunset-orange/20 text-sunset-orange text-2xl font-bold hover:bg-sunset-orange/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center"
           >
             -
           </button>
@@ -168,7 +168,7 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
           <button
             onClick={() => handleStrokeChange(displayStrokes + 1)}
             disabled={displayStrokes >= 15}
-            className="w-14 h-14 rounded-full bg-sunset-orange/20 text-sunset-orange text-2xl font-bold hover:bg-sunset-orange/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center"
+            className="scoring-button w-14 h-14 rounded-full bg-sunset-orange/20 text-sunset-orange text-2xl font-bold hover:bg-sunset-orange/30 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center"
           >
             +
           </button>
