@@ -40,7 +40,8 @@ export function HamburgerMenu() {
       {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-lg bg-rich-black/80 backdrop-blur-sm border border-foreground/10 hover:border-sunset-orange/40 transition-colors cursor-pointer"
+        style={{ top: "calc(1rem + env(safe-area-inset-top, 0px))" }}
+        className="fixed right-4 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-lg bg-rich-black/80 backdrop-blur-sm border border-foreground/10 hover:border-sunset-orange/40 transition-colors cursor-pointer"
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
       >

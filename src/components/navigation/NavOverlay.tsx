@@ -78,7 +78,7 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
       </motion.nav>
 
       {/* WABO DOGS logo */}
-      <div className="absolute bottom-8">
+      <div className="absolute bottom-8" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
         <Image
           src="/wabodogs-logo.png"
           alt="WABO DOGS"
