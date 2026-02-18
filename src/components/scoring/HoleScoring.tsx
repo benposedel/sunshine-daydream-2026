@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { COURSE_HOLES, COURSE_HOLES_COUNT } from "@/lib/course-data";
 import { useTeamScoring } from "@/hooks/useTeamScoring";
 import { StrokeDifferential, formatScoreToPar } from "./StrokeDifferential";
+import { OfflineIndicator } from "@/components/ui/OfflineIndicator";
 
 interface HoleScoringProps {
   teamId: string;
@@ -14,7 +15,7 @@ interface HoleScoringProps {
 export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
   const [currentHole, setCurrentHole] = useState(1);
   const [showSummary, setShowSummary] = useState(false);
-  const { scores, isLoading, savingHoles, getScoreForHole, submitScore, totalStrokes, holesCompleted } = useTeamScoring(teamId);
+  const { scores, isLoading, savingHoles, getScoreForHole, submitScore, totalStrokes, holesCompleted, isOnline, pendingCount, syncedMessage } = useTeamScoring(teamId);
 
   const hole = COURSE_HOLES.find((h) => h.hole_number === currentHole)!;
   const currentStrokes = getScoreForHole(currentHole);
@@ -25,13 +26,6 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
     const h = COURSE_HOLES.find((c) => c.hole_number === s.hole_number);
     return acc + (h ? s.strokes - h.par : 0);
   }, 0);
-
-  // Ensure a score exists for this hole when we view it
-  useEffect(() => {
-    if (!isLoading && currentStrokes === null) {
-      // Don't auto-submit; wait for user interaction
-    }
-  }, [currentHole, isLoading, currentStrokes]);
 
   function handleStrokeChange(newStrokes: number) {
     if (newStrokes < 1 || newStrokes > 15) return;
@@ -89,6 +83,9 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
           View Summary
         </button>
       </div>
+
+      {/* Offline / sync status */}
+      <OfflineIndicator isOnline={isOnline} pendingCount={pendingCount} syncedMessage={syncedMessage} />
 
       {/* Running score */}
       <div className="text-center mb-2">
