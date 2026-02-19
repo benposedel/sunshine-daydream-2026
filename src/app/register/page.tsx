@@ -245,6 +245,9 @@ export default function Register() {
                       placeholder="0000" inputMode="numeric" maxLength={4}
                     />
                   </div>
+                  <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] -mt-2">
+                    Your PIN is used to access live scoring on tournament day. Write this down or choose something easy to remember.
+                  </p>
 
                   {/* Divider */}
                   <div className="border-t border-foreground/10 pt-4">
