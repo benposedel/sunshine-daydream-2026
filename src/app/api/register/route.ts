@@ -73,6 +73,13 @@ export async function POST(request: Request) {
       );
     }
 
+    // Sync to Google Sheets (fire-and-forget — don't block registration)
+    fetch("https://script.google.com/macros/s/AKfycbym5HyPfrhNxSDcgtg4tWvdL74b4EvR7-3_-VpMMgvTOdnlMSjZg62rlHMSR1pe_qY/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ team_name, player1_name, player2_name, email, phone, shirt_size, notes }),
+    }).catch((err) => console.error("Google Sheets sync error:", err));
+
     return NextResponse.json({ success: true, team: data });
   } catch (error) {
     console.error("Registration error:", error);
