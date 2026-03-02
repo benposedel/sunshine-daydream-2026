@@ -5,9 +5,14 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavOverlay } from "./NavOverlay";
 
+// Only show hamburger on golf-related pages (dark theme)
+const GOLF_PATHS = ["/golf", "/register", "/scoring", "/leaderboard"];
+
 export function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  const isGolfPage = GOLF_PATHS.some((p) => pathname === p || pathname.startsWith(p + "/"));
 
   // Close menu on route change
   useEffect(() => {
@@ -34,6 +39,8 @@ export function HamburgerMenu() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  if (!isGolfPage) return null;
 
   return (
     <>
