@@ -53,7 +53,7 @@ export default function GolfHome() {
                 June 17, 2026
               </div>
               <div className="text-text-secondary text-sm mt-2 font-[family-name:var(--font-body)]">
-                10:00 AM Shotgun Start
+                First tee time @ 10:00 AM
               </div>
             </div>
 
