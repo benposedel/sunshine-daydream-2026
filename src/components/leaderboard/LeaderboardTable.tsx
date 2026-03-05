@@ -21,10 +21,10 @@ export function LeaderboardTable() {
     return (
       <div className="text-center py-16">
         <p className="text-5xl mb-4">&#x1F43B;</p>
-        <p className="text-foreground/60 text-lg font-[family-name:var(--font-heading)]">
+        <p className="text-text-secondary text-lg font-[family-name:var(--font-heading)]">
           No teams yet
         </p>
-        <p className="text-foreground/40 text-sm mt-2 font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm mt-2 font-[family-name:var(--font-body)]">
           Register a team and start scoring to see the leaderboard come alive!
         </p>
       </div>
@@ -36,16 +36,16 @@ export function LeaderboardTable() {
       {/* Header */}
       <div className="flex items-center justify-between mb-4 px-4">
         <div className="flex items-center gap-4">
-          <span className="text-xs tracking-[0.2em] uppercase text-foreground/40 font-[family-name:var(--font-heading)]">
+          <span className="text-xs tracking-[0.2em] uppercase text-text-muted font-[family-name:var(--font-heading)]">
             {COURSE_NAME}
           </span>
-          <span className="text-xs text-foreground/30 font-[family-name:var(--font-mono)]">
+          <span className="text-xs text-text-muted font-[family-name:var(--font-mono)]">
             Par {COURSE_PAR}
           </span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-electric-teal animate-pulse" />
-          <span className="text-[10px] text-electric-teal font-[family-name:var(--font-body)]">LIVE</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          <span className="text-[10px] text-accent font-[family-name:var(--font-body)]">LIVE</span>
         </div>
       </div>
 

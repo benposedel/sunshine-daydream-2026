@@ -58,13 +58,13 @@ export function CountdownTimer() {
   if (!targetDate || isNaN(targetDate.getTime())) {
     return (
       <div className="glass-card p-6 w-full max-w-sm text-center">
-        <p className="text-xs tracking-[0.2em] uppercase text-golden-yellow mb-3 font-[family-name:var(--font-heading)]">
+        <p className="text-xs tracking-[0.2em] uppercase text-accent-warm mb-3 font-[family-name:var(--font-heading)]">
           Tournament Date
         </p>
         <p className="text-2xl font-bold font-[family-name:var(--font-heading)] text-foreground">
           DATE TBD
         </p>
-        <p className="text-foreground/50 text-sm mt-2 font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm mt-2 font-[family-name:var(--font-body)]">
           Stay tuned for the announcement
         </p>
       </div>
@@ -75,10 +75,10 @@ export function CountdownTimer() {
   if (!timeLeft) {
     return (
       <div className="glass-card p-6 w-full max-w-sm text-center">
-        <p className="text-xs tracking-[0.2em] uppercase text-golden-yellow mb-3 font-[family-name:var(--font-heading)]">
+        <p className="text-xs tracking-[0.2em] uppercase text-accent-warm mb-3 font-[family-name:var(--font-heading)]">
           Tournament
         </p>
-        <p className="text-2xl font-bold font-[family-name:var(--font-heading)] wavy-text">
+        <p className="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent">
           Game Day!
         </p>
       </div>
@@ -94,18 +94,18 @@ export function CountdownTimer() {
 
   return (
     <div className="glass-card p-6 w-full max-w-sm">
-      <p className="text-xs tracking-[0.2em] uppercase text-golden-yellow mb-4 text-center font-[family-name:var(--font-heading)]">
+      <p className="text-xs tracking-[0.2em] uppercase text-accent-warm mb-4 text-center font-[family-name:var(--font-heading)]">
         Countdown
       </p>
       <div className="grid grid-cols-4 gap-3">
         {units.map(({ label, value }) => (
           <div key={label} className="text-center">
-            <div className="bg-rich-black/60 rounded-lg p-3 border border-foreground/10">
+            <div className="bg-gray-100 rounded-lg p-3 border border-border">
               <p className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-mono)] text-foreground tabular-nums">
                 {String(value).padStart(2, "0")}
               </p>
             </div>
-            <p className="text-[10px] tracking-[0.15em] uppercase text-foreground/50 mt-1 font-[family-name:var(--font-heading)]">
+            <p className="text-[10px] tracking-[0.15em] uppercase text-text-muted mt-1 font-[family-name:var(--font-heading)]">
               {label}
             </p>
           </div>

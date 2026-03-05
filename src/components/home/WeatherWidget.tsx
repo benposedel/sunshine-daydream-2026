@@ -39,7 +39,7 @@ export function WeatherWidget() {
   if (error || !weather) {
     return (
       <div className="glass-card p-6 w-full max-w-sm">
-        <p className="text-foreground/40 text-sm font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm font-[family-name:var(--font-body)]">
           Weather unavailable
         </p>
       </div>
@@ -51,7 +51,7 @@ export function WeatherWidget() {
 
   return (
     <div className="glass-card p-6 w-full max-w-sm">
-      <p className="text-xs tracking-[0.2em] uppercase text-electric-teal mb-3 font-[family-name:var(--font-heading)]">
+      <p className="text-xs tracking-[0.2em] uppercase text-accent mb-3 font-[family-name:var(--font-heading)]">
         Course Weather
       </p>
 
@@ -61,27 +61,27 @@ export function WeatherWidget() {
           <p className="text-4xl font-bold font-[family-name:var(--font-mono)] text-foreground">
             {weather.temp}&deg;F
           </p>
-          <p className="text-foreground/60 text-sm capitalize font-[family-name:var(--font-body)]">
+          <p className="text-text-secondary text-sm capitalize font-[family-name:var(--font-body)]">
             {weather.description}
           </p>
         </div>
       </div>
 
-      <div className="flex gap-6 text-sm text-foreground/60 font-[family-name:var(--font-body)]">
+      <div className="flex gap-6 text-sm text-text-secondary font-[family-name:var(--font-body)]">
         <div>
-          <span className="text-foreground/40">Wind</span>{" "}
+          <span className="text-text-muted">Wind</span>{" "}
           <span className="text-foreground font-[family-name:var(--font-mono)]">{weather.wind_speed} mph</span>
         </div>
         <div>
-          <span className="text-foreground/40">Humidity</span>{" "}
+          <span className="text-text-muted">Humidity</span>{" "}
           <span className="text-foreground font-[family-name:var(--font-mono)]">{weather.humidity}%</span>
         </div>
       </div>
 
-      <div className="mt-3 pt-3 border-t border-foreground/10">
-        <p className="text-xs text-foreground/50 font-[family-name:var(--font-body)]">
+      <div className="mt-3 pt-3 border-t border-border">
+        <p className="text-xs text-text-secondary font-[family-name:var(--font-body)]">
           Course Conditions:{" "}
-          <span className={condition === "Dry" ? "text-electric-teal" : "text-sunset-orange"}>
+          <span className={condition === "Dry" ? "text-accent" : "text-amber-600"}>
             {condition}
           </span>
         </p>

@@ -22,11 +22,11 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-sunset-orange text-rich-black hover:bg-sunset-orange/90 border-2 border-sunset-orange shadow-[0_0_20px_rgba(255,107,53,0.3)] hover:shadow-[0_0_30px_rgba(255,107,53,0.5)]",
+      "bg-gray-900 text-white hover:bg-gray-800 border-2 border-gray-900",
     secondary:
-      "bg-transparent text-rose-magenta border-2 border-rose-magenta hover:bg-rose-magenta hover:text-rich-black",
+      "bg-transparent text-foreground border-2 border-border hover:border-foreground",
     ghost:
-      "bg-transparent text-foreground hover:text-sunset-orange border-2 border-transparent hover:border-sunset-orange/30",
+      "bg-transparent text-text-secondary hover:text-foreground border-2 border-transparent hover:border-border",
   };
 
   const sizes = {

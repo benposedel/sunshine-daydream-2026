@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -44,13 +43,8 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
       animate="visible"
       exit="exit"
       transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-40 bg-rich-black/95 backdrop-blur-md flex flex-col items-center justify-center"
+      className="fixed inset-0 z-40 bg-white/98 backdrop-blur-md flex flex-col items-center justify-center"
     >
-      {/* Lightning bolt accent */}
-      <div className="absolute top-8 left-8 text-sunset-orange/20 text-6xl select-none">
-        &#x26A1;
-      </div>
-
       <motion.nav
         variants={listVariants}
         initial="hidden"
@@ -66,8 +60,8 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
                 onClick={onClose}
                 className={`text-3xl md:text-5xl font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase transition-colors duration-200 ${
                   isActive
-                    ? "text-sunset-orange"
-                    : "text-foreground hover:text-golden-yellow"
+                    ? "text-accent"
+                    : "text-foreground hover:text-accent-warm"
                 }`}
               >
                 {item.label}
@@ -77,15 +71,11 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
         })}
       </motion.nav>
 
-      {/* WABO DOGS logo */}
+      {/* WABO DOGS text */}
       <div className="absolute bottom-8" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
-        <Image
-          src="/wabodogs-logo.png"
-          alt="WABO DOGS"
-          width={150}
-          height={30}
-          className="opacity-40"
-        />
+        <p className="text-text-muted text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-heading)]">
+          WABO DOGS
+        </p>
       </div>
     </motion.div>
   );

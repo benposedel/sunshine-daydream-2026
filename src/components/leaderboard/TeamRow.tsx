@@ -24,7 +24,7 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className={`glass-card p-4 cursor-pointer transition-colors ${
-        isLeader ? "border-golden-yellow/30 shadow-[0_0_20px_rgba(255,215,0,0.1)]" : ""
+        isLeader ? "border-accent-warm/50" : ""
       }`}
       onClick={() => setExpanded(!expanded)}
     >
@@ -32,7 +32,7 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
         {/* Rank */}
         <div className="w-10 text-center">
           <span className={`text-lg font-bold font-[family-name:var(--font-mono)] ${
-            isLeader ? "text-golden-yellow" : "text-foreground/60"
+            isLeader ? "text-accent-warm" : "text-text-secondary"
           }`}>
             {entry.tied ? "T" : ""}{entry.rank}
           </span>
@@ -43,10 +43,10 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
           <p className="text-foreground font-bold font-[family-name:var(--font-heading)] truncate text-sm">
             {entry.team_name}
           </p>
-          <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)]">
+          <p className="text-text-muted text-xs font-[family-name:var(--font-body)]">
             {isFinished ? "F" : `Thru ${entry.holes_completed}`}
             {!isFinished && entry.holes_completed > 0 && (
-              <span className="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-electric-teal animate-pulse" />
+              <span className="ml-1 inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             )}
           </p>
         </div>
@@ -54,14 +54,14 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
         {/* Score to par */}
         <div className="text-right">
           <span className={`text-xl font-bold font-[family-name:var(--font-mono)] ${
-            entry.holes_completed === 0 ? "text-foreground/30" :
+            entry.holes_completed === 0 ? "text-text-muted" :
             entry.score_to_par < 0 ? "text-grateful-red" :
-            entry.score_to_par === 0 ? "text-foreground" : "text-foreground/60"
+            entry.score_to_par === 0 ? "text-foreground" : "text-text-secondary"
           }`}>
             {entry.holes_completed > 0 ? formatScoreToPar(entry.score_to_par) : "--"}
           </span>
           {entry.holes_completed > 0 && (
-            <p className="text-foreground/40 text-xs font-[family-name:var(--font-mono)]">
+            <p className="text-text-muted text-xs font-[family-name:var(--font-mono)]">
               {entry.total_strokes}
             </p>
           )}
@@ -76,7 +76,7 @@ export function TeamRow({ entry, scores, isLeader }: TeamRowProps) {
           className="mt-3"
         >
           {entry.player_names && (
-            <p className="text-foreground/50 text-xs font-[family-name:var(--font-body)] mb-2">
+            <p className="text-text-secondary text-xs font-[family-name:var(--font-body)] mb-2">
               {entry.player_names}
             </p>
           )}

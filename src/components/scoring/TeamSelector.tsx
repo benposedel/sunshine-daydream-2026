@@ -57,10 +57,10 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
     return (
       <div className="text-center py-12">
         <p className="text-4xl mb-4">&#x1F43B;</p>
-        <p className="text-foreground/60 font-[family-name:var(--font-body)]">
+        <p className="text-text-secondary font-[family-name:var(--font-body)]">
           No teams registered yet.
         </p>
-        <p className="text-foreground/40 text-sm mt-2 font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm mt-2 font-[family-name:var(--font-body)]">
           Register a team first to start scoring.
         </p>
       </div>
@@ -75,7 +75,7 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search teams..."
-        className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors mb-4 font-[family-name:var(--font-body)]"
+        className="w-full bg-white border-2 border-border text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors mb-4 font-[family-name:var(--font-body)]"
       />
 
       {/* Team list */}
@@ -87,13 +87,13 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
             onClick={() => handleSelect(team)}
-            className="w-full glass-card p-4 text-left hover:border-sunset-orange/40 transition-colors cursor-pointer"
+            className="w-full glass-card p-4 text-left hover:border-accent/40 transition-colors cursor-pointer"
           >
             <p className="text-foreground font-bold font-[family-name:var(--font-heading)]">
               {getDisplayName(team)}
             </p>
             {team.team_name && (
-              <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] mt-1">
+              <p className="text-text-muted text-xs font-[family-name:var(--font-body)] mt-1">
                 {team.player1_name} & {team.player2_name}
               </p>
             )}

@@ -104,16 +104,12 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen psychedelic-bg noise-overlay">
-      <div className="lava-blob lava-blob-2" />
-      <div className="lava-blob lava-blob-4" />
-      <div className="lava-blob lava-blob-6" />
-
-      <div className="relative z-10 flex flex-col items-center px-6 py-16 md:py-24 max-w-2xl mx-auto">
+    <div className="min-h-screen bg-white">
+      <div className="flex flex-col items-center px-6 py-16 md:py-24 max-w-2xl mx-auto">
         {/* Back link */}
         <Link
           href="/"
-          className="self-start text-foreground/50 text-sm tracking-[0.1em] uppercase mb-12 hover:text-sunset-orange transition-colors flex items-center gap-2 font-[family-name:var(--font-body)]"
+          className="self-start text-text-muted text-sm tracking-[0.1em] uppercase mb-12 hover:text-foreground transition-colors flex items-center gap-2 font-[family-name:var(--font-body)]"
         >
           <span>&larr; Back</span>
         </Link>
@@ -121,22 +117,21 @@ export default function Register() {
         {/* Logo */}
         <div className="mb-8">
           <Image
-            src="/wabodogs-logo.png"
-            alt="WABO DOGS"
-            width={300}
-            height={50}
+            src="/daydream.png"
+            alt="Sunshine Daydream 2026"
+            width={900}
+            height={1350}
             priority
-            className="w-[180px] md:w-[260px]"
+            className="w-[160px] md:w-[220px] h-auto"
           />
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 font-[family-name:var(--font-heading)] tracking-tight">
-          <span className="text-foreground psychedelic-glow">Tournament</span>{" "}
-          <span className="wavy-text">Registration</span>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 font-[family-name:var(--font-heading)] tracking-tight text-foreground">
+          Tournament Registration
         </h1>
 
-        <p className="text-foreground/50 text-sm mb-10 text-center font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm mb-10 text-center font-[family-name:var(--font-body)]">
           Register your team for Sunshine Daydream 2026
         </p>
 
@@ -150,17 +145,17 @@ export default function Register() {
               className="w-full space-y-6"
             >
               <div className="glass-card p-8 text-center">
-                <div className="text-5xl mb-4">&#x26A1;</div>
-                <h2 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-golden-yellow mb-2">
+                <div className="text-5xl mb-4">&#x26F3;</div>
+                <h2 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-accent mb-2">
                   You&apos;re Registered!
                 </h2>
-                <p className="text-foreground/70 font-[family-name:var(--font-body)] mb-6">
+                <p className="text-text-secondary font-[family-name:var(--font-body)] mb-6">
                   We&apos;ll be in touch soon with details. Complete your entry by paying the tournament fee below.
                 </p>
 
                 {/* Venmo Payment */}
-                <div className="border-t border-foreground/10 pt-6 mt-6">
-                  <p className="text-xs tracking-[0.2em] uppercase text-foreground/40 mb-3 font-[family-name:var(--font-heading)]">
+                <div className="border-t border-border pt-6 mt-6">
+                  <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-3 font-[family-name:var(--font-heading)]">
                     Tournament Fee &mdash; $60 per player
                   </p>
                   <a
@@ -171,7 +166,7 @@ export default function Register() {
                   >
                     Pay with Venmo
                   </a>
-                  <p className="text-foreground/40 text-xs mt-3 font-[family-name:var(--font-body)]">
+                  <p className="text-text-muted text-xs mt-3 font-[family-name:var(--font-body)]">
                     Pay via Venmo to @Ben-Posedel
                   </p>
                 </div>
@@ -205,8 +200,8 @@ export default function Register() {
                   />
 
                   {/* Divider */}
-                  <div className="border-t border-foreground/10 pt-4">
-                    <p className="text-xs tracking-[0.2em] uppercase text-electric-teal/60 mb-4 font-[family-name:var(--font-heading)]">
+                  <div className="border-t border-border pt-4">
+                    <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-4 font-[family-name:var(--font-heading)]">
                       Player 1
                     </p>
                   </div>
@@ -245,13 +240,13 @@ export default function Register() {
                       placeholder="0000" inputMode="numeric" maxLength={4}
                     />
                   </div>
-                  <p className="text-foreground/40 text-xs font-[family-name:var(--font-body)] -mt-2">
+                  <p className="text-text-muted text-xs font-[family-name:var(--font-body)] -mt-2">
                     Your PIN is used to access live scoring on tournament day. Write this down or choose something easy to remember.
                   </p>
 
                   {/* Divider */}
-                  <div className="border-t border-foreground/10 pt-4">
-                    <p className="text-xs tracking-[0.2em] uppercase text-electric-teal/60 mb-4 font-[family-name:var(--font-heading)]">
+                  <div className="border-t border-border pt-4">
+                    <p className="text-xs tracking-[0.2em] uppercase text-text-muted mb-4 font-[family-name:var(--font-heading)]">
                       Player 2
                     </p>
                   </div>
@@ -264,11 +259,11 @@ export default function Register() {
                   />
 
                   {/* Divider */}
-                  <div className="border-t border-foreground/10 pt-4" />
+                  <div className="border-t border-border pt-4" />
 
                   {/* Shirt Size - Radio buttons */}
                   <div>
-                    <label className="block text-rose-magenta text-xs tracking-[0.2em] uppercase mb-3 font-[family-name:var(--font-heading)]">
+                    <label className="block text-text-secondary text-xs tracking-[0.2em] uppercase mb-3 font-[family-name:var(--font-heading)]">
                       Shirt Size
                     </label>
                     <div className="flex flex-wrap gap-2">
@@ -282,8 +277,8 @@ export default function Register() {
                           }}
                           className={`px-4 py-2.5 rounded-lg text-sm font-[family-name:var(--font-body)] font-medium transition-all min-w-[56px] cursor-pointer ${
                             formData.shirtSize === size
-                              ? "bg-sunset-orange text-rich-black border-2 border-sunset-orange"
-                              : "bg-rich-black/50 text-foreground/70 border-2 border-foreground/20 hover:border-foreground/40"
+                              ? "bg-gray-900 text-white border-2 border-gray-900"
+                              : "bg-white text-text-secondary border-2 border-border hover:border-foreground/40"
                           }`}
                         >
                           {size}
@@ -299,16 +294,16 @@ export default function Register() {
                   <div>
                     <label
                       htmlFor="notes"
-                      className="block text-rose-magenta text-xs tracking-[0.2em] uppercase mb-2 font-[family-name:var(--font-heading)]"
+                      className="block text-text-secondary text-xs tracking-[0.2em] uppercase mb-2 font-[family-name:var(--font-heading)]"
                     >
-                      Notes <span className="text-foreground/30">(optional)</span>
+                      Notes <span className="text-text-muted">(optional)</span>
                     </label>
                     <textarea
                       id="notes"
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       rows={3}
-                      className="w-full bg-rich-black/50 border-2 border-foreground/20 text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors resize-none font-[family-name:var(--font-body)]"
+                      className="w-full bg-white border-2 border-border text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors resize-none font-[family-name:var(--font-body)]"
                       placeholder="Dietary restrictions, song requests, etc."
                     />
                   </div>
@@ -325,7 +320,7 @@ export default function Register() {
         </AnimatePresence>
 
         {/* Footer */}
-        <div className="mt-10 text-foreground/20 text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
+        <div className="mt-10 text-text-muted text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
           A WABO DOGS Production
         </div>
       </div>
@@ -348,7 +343,7 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
 }) {
   return (
     <div>
-      <label htmlFor={id} className="block text-rose-magenta text-xs tracking-[0.2em] uppercase mb-2 font-[family-name:var(--font-heading)]">
+      <label htmlFor={id} className="block text-text-secondary text-xs tracking-[0.2em] uppercase mb-2 font-[family-name:var(--font-heading)]">
         {label}
       </label>
       <input
@@ -358,9 +353,9 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
         onChange={(e) => onChange(e.target.value)}
         inputMode={inputMode}
         maxLength={maxLength}
-        className={`w-full bg-rich-black/50 border-2 ${
-          error ? "border-grateful-red/60" : "border-foreground/20"
-        } text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-rose-magenta transition-colors font-[family-name:var(--font-body)]`}
+        className={`w-full bg-white border-2 ${
+          error ? "border-grateful-red/60" : "border-border"
+        } text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors font-[family-name:var(--font-body)]`}
         placeholder={placeholder}
       />
       {error && (
@@ -369,4 +364,3 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
     </div>
   );
 }
-

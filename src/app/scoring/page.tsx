@@ -61,17 +61,12 @@ export default function ScoringPage() {
   }
 
   return (
-    <div className="min-h-screen psychedelic-bg noise-overlay scoring-page">
-      <div className="lava-blob lava-blob-1" />
-      <div className="lava-blob lava-blob-4" />
-      <div className="lava-blob lava-blob-7" />
-
-      <div className="relative z-10 max-w-2xl mx-auto px-6 py-16">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 font-[family-name:var(--font-heading)] tracking-tight">
-          <span className="text-foreground psychedelic-glow">Live</span>{" "}
-          <span className="wavy-text">Scoring</span>
+    <div className="min-h-screen bg-white scoring-page">
+      <div className="max-w-2xl mx-auto px-6 py-16">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2 font-[family-name:var(--font-heading)] tracking-tight text-foreground">
+          Live Scoring
         </h1>
-        <p className="text-foreground/50 text-sm mb-10 text-center font-[family-name:var(--font-body)]">
+        <p className="text-text-muted text-sm mb-10 text-center font-[family-name:var(--font-body)]">
           Enter your scores hole by hole
         </p>
 
@@ -79,10 +74,10 @@ export default function ScoringPage() {
           <div>
             {/* Team name banner */}
             <div className="text-center mb-6">
-              <span className="text-xs tracking-[0.2em] uppercase text-foreground/40 font-[family-name:var(--font-heading)]">
+              <span className="text-xs tracking-[0.2em] uppercase text-text-muted font-[family-name:var(--font-heading)]">
                 Scoring for
               </span>
-              <p className="text-lg font-bold font-[family-name:var(--font-heading)] text-golden-yellow">
+              <p className="text-lg font-bold font-[family-name:var(--font-heading)] text-accent">
                 {selectedTeamName}
               </p>
             </div>
@@ -95,7 +90,7 @@ export default function ScoringPage() {
             className="max-w-sm mx-auto"
           >
             <div className="glass-card p-8 text-center">
-              <p className="text-foreground/60 text-sm mb-1 font-[family-name:var(--font-body)]">
+              <p className="text-text-secondary text-sm mb-1 font-[family-name:var(--font-body)]">
                 {selectedTeamName}
               </p>
               <h2 className="text-xl font-bold font-[family-name:var(--font-heading)] text-foreground mb-6">
@@ -114,9 +109,9 @@ export default function ScoringPage() {
                   }}
                   placeholder="0000"
                   autoFocus
-                  className={`w-full text-center text-4xl tracking-[0.5em] font-[family-name:var(--font-mono)] font-bold bg-rich-black/50 border-2 ${
-                    pinError ? "border-grateful-red/60 animate-[shake_0.3s_ease-in-out]" : "border-foreground/20"
-                  } text-foreground rounded-lg px-4 py-4 focus:outline-none focus:border-rose-magenta transition-colors mb-4`}
+                  className={`w-full text-center text-4xl tracking-[0.5em] font-[family-name:var(--font-mono)] font-bold bg-white border-2 ${
+                    pinError ? "border-grateful-red/60 animate-[shake_0.3s_ease-in-out]" : "border-border"
+                  } text-foreground rounded-lg px-4 py-4 focus:outline-none focus:border-accent transition-colors mb-4`}
                 />
 
                 {pinError && (
@@ -132,7 +127,7 @@ export default function ScoringPage() {
                 <button
                   type="button"
                   onClick={handleChangeTeam}
-                  className="text-foreground/40 text-sm hover:text-foreground/60 transition-colors font-[family-name:var(--font-body)] cursor-pointer"
+                  className="text-text-muted text-sm hover:text-text-secondary transition-colors font-[family-name:var(--font-body)] cursor-pointer"
                 >
                   &larr; Different team
                 </button>

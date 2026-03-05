@@ -12,7 +12,6 @@ export default function LandingPage() {
   const [passwordError, setPasswordError] = useState("");
 
   function handleGolfClick() {
-    // If already authenticated, go straight through
     if (localStorage.getItem("golf-access") === "true") {
       router.push("/golf");
       return;
@@ -35,23 +34,18 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16 relative">
-      {/* Logo */}
-      <div className="mb-6">
+    <div className="min-h-screen bg-white flex flex-col items-center px-6 py-12 relative">
+      {/* Hero Illustration */}
+      <div className="w-full max-w-lg mx-auto mb-12">
         <Image
-          src="/wabodogs-logo-color.png"
-          alt="WABO DOGS"
-          width={600}
-          height={120}
+          src="/daydream.png"
+          alt="Sunshine Daydream 2026 — WABO DOGS Golf Tournament"
+          width={900}
+          height={1350}
           priority
-          className="w-[280px] md:w-[500px]"
+          className="w-full h-auto"
         />
       </div>
-
-      {/* Subtitle */}
-      <p className="text-gray-500 text-sm md:text-base tracking-[0.3em] uppercase font-[family-name:var(--font-heading)] mb-16">
-        Sports and Leisure Club
-      </p>
 
       {/* Activity Buttons */}
       <div className="flex gap-4 md:gap-6 mb-16">

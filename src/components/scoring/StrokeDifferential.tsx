@@ -18,7 +18,7 @@ function getScoreLabel(diff: number): string {
 function getScoreColor(diff: number): string {
   if (diff < 0) return "text-grateful-red font-bold";
   if (diff === 0) return "text-foreground";
-  return "text-foreground/60";
+  return "text-text-secondary";
 }
 
 export function formatScoreToPar(score: number): string {

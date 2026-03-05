@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavOverlay } from "./NavOverlay";
 
-// Only show hamburger on golf-related pages (dark theme)
+// Only show hamburger on golf-related pages
 const GOLF_PATHS = ["/golf", "/register", "/scoring", "/leaderboard"];
 
 export function HamburgerMenu() {
@@ -48,7 +48,7 @@ export function HamburgerMenu() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         style={{ top: "calc(1rem + env(safe-area-inset-top, 0px))" }}
-        className="fixed right-4 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-lg bg-rich-black/80 backdrop-blur-sm border border-foreground/10 hover:border-sunset-orange/40 transition-colors cursor-pointer"
+        className="fixed right-4 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 rounded-lg bg-white/80 backdrop-blur-sm border border-border hover:border-foreground/40 transition-colors cursor-pointer"
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
       >

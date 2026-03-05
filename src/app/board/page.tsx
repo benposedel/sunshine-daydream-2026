@@ -23,7 +23,7 @@ export default function BoardPage() {
         {/* Back link */}
         <Link
           href="/"
-          className="text-gray-400 text-sm tracking-[0.1em] uppercase hover:text-gray-900 transition-colors flex items-center gap-2 font-[family-name:var(--font-body)] mb-12"
+          className="text-text-muted text-sm tracking-[0.1em] uppercase hover:text-foreground transition-colors flex items-center gap-2 font-[family-name:var(--font-body)] mb-12"
         >
           &larr; Back
         </Link>
@@ -40,10 +40,10 @@ export default function BoardPage() {
         </div>
 
         {/* Title */}
-        <h1 className="text-gray-900 text-2xl md:text-3xl font-[family-name:var(--font-heading)] font-bold text-center mb-2">
+        <h1 className="text-foreground text-2xl md:text-3xl font-[family-name:var(--font-heading)] font-bold text-center mb-2">
           Board of Directors
         </h1>
-        <p className="text-gray-400 text-xs tracking-[0.2em] uppercase text-center mb-16 font-[family-name:var(--font-heading)]">
+        <p className="text-text-muted text-xs tracking-[0.2em] uppercase text-center mb-16 font-[family-name:var(--font-heading)]">
           Leadership Team
         </p>
 
@@ -68,13 +68,13 @@ export default function BoardPage() {
 
               {/* Bio */}
               <div className="flex-1">
-                <h2 className="text-gray-900 text-xl font-[family-name:var(--font-heading)] font-bold mb-1">
+                <h2 className="text-foreground text-xl font-[family-name:var(--font-heading)] font-bold mb-1">
                   {member.name}
                 </h2>
-                <p className="text-gray-400 text-xs tracking-[0.15em] uppercase font-[family-name:var(--font-heading)] mb-4">
+                <p className="text-text-muted text-xs tracking-[0.15em] uppercase font-[family-name:var(--font-heading)] mb-4">
                   {member.title}
                 </p>
-                <p className="text-gray-600 text-base leading-relaxed font-[family-name:var(--font-body)]">
+                <p className="text-text-secondary text-base leading-relaxed font-[family-name:var(--font-body)]">
                   {member.bio}
                 </p>
               </div>
@@ -83,8 +83,8 @@ export default function BoardPage() {
         </div>
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-gray-100 text-center">
-          <p className="text-gray-300 text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
+        <div className="mt-16 pt-8 border-t border-border text-center">
+          <p className="text-text-muted text-xs tracking-[0.2em] uppercase font-[family-name:var(--font-body)]">
             WABO DOGS Sports and Leisure Club
           </p>
         </div>
