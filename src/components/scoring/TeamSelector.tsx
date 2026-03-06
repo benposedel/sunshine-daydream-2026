@@ -75,7 +75,7 @@ export function TeamSelector({ onSelect }: TeamSelectorProps) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search teams..."
-        className="w-full bg-white border-2 border-border text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors mb-4 font-[family-name:var(--font-body)]"
+        className="w-full bg-white border-2 border-border text-foreground px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors mb-4 font-[family-name:var(--font-body)]"
       />
 
       {/* Team list */}

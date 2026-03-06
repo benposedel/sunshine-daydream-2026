@@ -192,14 +192,14 @@ export function HoleScoring({ teamId, onChangeTeam }: HoleScoringProps) {
         {currentHole < COURSE_HOLES_COUNT ? (
           <button
             onClick={() => goToHole(currentHole + 1)}
-            className="flex-1 py-3 bg-gray-900 text-white text-sm font-[family-name:var(--font-heading)] font-bold uppercase tracking-wider rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
+            className="flex-1 py-3 bg-gray-900 text-white text-sm font-[family-name:var(--font-heading)] font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors cursor-pointer"
           >
             Next Hole &rarr;
           </button>
         ) : (
           <button
             onClick={() => { submitCurrentIfNeeded(); setShowSummary(true); }}
-            className="flex-1 py-3 bg-accent text-white text-sm font-[family-name:var(--font-heading)] font-bold uppercase tracking-wider rounded-lg hover:bg-accent/90 transition-colors cursor-pointer"
+            className="flex-1 py-3 bg-accent text-white text-sm font-[family-name:var(--font-heading)] font-bold uppercase tracking-wider hover:bg-accent/90 transition-colors cursor-pointer"
           >
             Finish Round
           </button>
@@ -245,7 +245,7 @@ function ScoringRoundSummary({ scores, onEditHole, onBack, onChangeTeam }: Scori
               <button
                 key={h.hole_number}
                 onClick={() => onEditHole(h.hole_number)}
-                className="w-full flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between py-2 px-3 hover:bg-gray-50 transition-colors cursor-pointer"
               >
                 <div className="flex items-center gap-4">
                   <span className="text-text-muted text-sm font-[family-name:var(--font-mono)] w-6">

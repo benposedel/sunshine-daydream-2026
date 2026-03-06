@@ -162,7 +162,7 @@ export default function Register() {
                     href="https://venmo.com/u/Ben-Posedel?txn=pay&amount=60&note=Sunshine%20Daydream%202026"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 bg-[#008CFF] text-white font-bold font-[family-name:var(--font-heading)] text-lg tracking-wider uppercase px-10 py-4 rounded-lg hover:bg-[#0074d4] transition-colors min-h-[52px] w-full md:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-[#008CFF] text-white font-bold font-[family-name:var(--font-heading)] text-lg tracking-wider uppercase px-10 py-4 hover:bg-[#0074d4] transition-colors min-h-[52px] w-full md:w-auto"
                   >
                     Pay with Venmo
                   </a>
@@ -186,7 +186,7 @@ export default function Register() {
               <form onSubmit={handleSubmit} className="w-full glass-card p-8 mb-6">
                 {/* Error banner */}
                 {submitStatus === "error" && (
-                  <div className="mb-6 p-4 rounded-lg border border-grateful-red/30 bg-grateful-red/10 text-grateful-red text-sm text-center font-[family-name:var(--font-body)]">
+                  <div className="mb-6 p-4 border border-grateful-red/30 bg-grateful-red/10 text-grateful-red text-sm text-center font-[family-name:var(--font-body)]">
                     {submitError}
                   </div>
                 )}
@@ -275,7 +275,7 @@ export default function Register() {
                             setFormData({ ...formData, shirtSize: size as ShirtSize });
                             clearError("shirtSize");
                           }}
-                          className={`px-4 py-2.5 rounded-lg text-sm font-[family-name:var(--font-body)] font-medium transition-all min-w-[56px] cursor-pointer ${
+                          className={`px-4 py-2.5 text-sm font-[family-name:var(--font-body)] font-medium transition-all min-w-[56px] cursor-pointer ${
                             formData.shirtSize === size
                               ? "bg-gray-900 text-white border-2 border-gray-900"
                               : "bg-white text-text-secondary border-2 border-border hover:border-foreground/40"
@@ -303,7 +303,7 @@ export default function Register() {
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                       rows={3}
-                      className="w-full bg-white border-2 border-border text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors resize-none font-[family-name:var(--font-body)]"
+                      className="w-full bg-white border-2 border-border text-foreground px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors resize-none font-[family-name:var(--font-body)]"
                       placeholder="Dietary restrictions, song requests, etc."
                     />
                   </div>
@@ -355,7 +355,7 @@ function FormField({ label, id, error, value, onChange, placeholder, inputMode, 
         maxLength={maxLength}
         className={`w-full bg-white border-2 ${
           error ? "border-grateful-red/60" : "border-border"
-        } text-foreground rounded-lg px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors font-[family-name:var(--font-body)]`}
+        } text-foreground px-4 py-3 text-base focus:outline-none focus:border-accent transition-colors font-[family-name:var(--font-body)]`}
         placeholder={placeholder}
       />
       {error && (

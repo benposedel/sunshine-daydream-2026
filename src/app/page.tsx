@@ -34,7 +34,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-16 relative">
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-20 relative">
       {/* Logo */}
       <div className="mb-6">
         <Image
@@ -53,11 +53,11 @@ export default function LandingPage() {
       </p>
 
       {/* Activity Buttons */}
-      <div className="flex gap-4 md:gap-6 mb-16">
+      <div className="flex gap-4 md:gap-6 mb-20">
         {/* Golf - clickable with password */}
         <button
           onClick={handleGolfClick}
-          className="w-28 h-28 md:w-36 md:h-36 rounded-2xl border-2 border-gray-200 bg-white hover:border-gray-900 hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center gap-2 cursor-pointer group"
+          className="w-28 h-28 md:w-36 md:h-36 border-2 border-gray-200 bg-white hover:border-gray-900 transition-colors duration-200 flex flex-col items-center justify-center gap-2 cursor-pointer group"
         >
           <span className="text-3xl md:text-4xl">&#x26F3;</span>
           <span className="text-gray-900 text-sm md:text-base font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase">
@@ -66,12 +66,12 @@ export default function LandingPage() {
         </button>
 
         {/* Running - coming soon */}
-        <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl border-2 border-gray-200 bg-white flex flex-col items-center justify-center gap-2 opacity-60 group">
+        <div className="relative w-28 h-28 md:w-36 md:h-36 border-2 border-gray-200 bg-white flex flex-col items-center justify-center gap-2 opacity-60 group">
           <span className="text-3xl md:text-4xl">&#x1F3C3;</span>
           <span className="text-gray-400 text-sm md:text-base font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase">
             Running
           </span>
-          <div className="absolute inset-0 rounded-2xl bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="absolute inset-0 bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <span className="text-gray-500 text-xs font-[family-name:var(--font-heading)] font-bold tracking-[0.2em] uppercase">
               Coming Soon
             </span>
@@ -79,12 +79,12 @@ export default function LandingPage() {
         </div>
 
         {/* Softball - coming soon */}
-        <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl border-2 border-gray-200 bg-white flex flex-col items-center justify-center gap-2 opacity-60 group">
+        <div className="relative w-28 h-28 md:w-36 md:h-36 border-2 border-gray-200 bg-white flex flex-col items-center justify-center gap-2 opacity-60 group">
           <span className="text-3xl md:text-4xl">&#x1F94E;</span>
           <span className="text-gray-400 text-sm md:text-base font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase">
             Softball
           </span>
-          <div className="absolute inset-0 rounded-2xl bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="absolute inset-0 bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <span className="text-gray-500 text-xs font-[family-name:var(--font-heading)] font-bold tracking-[0.2em] uppercase">
               Coming Soon
             </span>
@@ -103,7 +103,7 @@ export default function LandingPage() {
       {/* Password Modal */}
       {showPasswordModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-sm mx-4">
+          <div className="bg-white p-8 w-full max-w-sm mx-4 border border-border">
             <h2 className="text-gray-900 text-lg font-[family-name:var(--font-heading)] font-bold text-center mb-2">
               Enter Password
             </h2>
@@ -123,7 +123,7 @@ export default function LandingPage() {
                 autoFocus
                 className={`w-full border-2 ${
                   passwordError ? "border-red-400" : "border-gray-200"
-                } rounded-lg px-4 py-3 text-base text-gray-900 focus:outline-none focus:border-gray-900 transition-colors font-[family-name:var(--font-body)] mb-2`}
+                } px-4 py-3 text-base text-gray-900 focus:outline-none focus:border-gray-900 transition-colors font-[family-name:var(--font-body)] mb-2`}
               />
               {passwordError && (
                 <p className="text-red-500 text-xs mb-2 font-[family-name:var(--font-body)]">
@@ -133,7 +133,7 @@ export default function LandingPage() {
 
               <button
                 type="submit"
-                className="w-full mt-2 bg-gray-900 text-white py-3 rounded-lg font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase text-sm hover:bg-gray-800 transition-colors cursor-pointer"
+                className="w-full mt-2 bg-gray-900 text-white py-3 font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase text-sm hover:bg-gray-800 transition-colors cursor-pointer"
               >
                 Enter
               </button>

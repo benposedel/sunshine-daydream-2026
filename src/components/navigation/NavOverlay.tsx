@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -45,6 +46,19 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
       transition={{ duration: 0.25 }}
       className="fixed inset-0 z-40 bg-white/98 backdrop-blur-md flex flex-col items-center justify-center"
     >
+      {/* Logo at top */}
+      <div className="absolute top-8" style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}>
+        <Link href="/" onClick={onClose}>
+          <Image
+            src="/wabodogs-logo-color.png"
+            alt="WABO DOGS"
+            width={400}
+            height={80}
+            className="w-[140px] md:w-[180px]"
+          />
+        </Link>
+      </div>
+
       <motion.nav
         variants={listVariants}
         initial="hidden"
@@ -70,13 +84,6 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
           );
         })}
       </motion.nav>
-
-      {/* WABO DOGS text */}
-      <div className="absolute bottom-8" style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}>
-        <p className="text-text-muted text-xs tracking-[0.3em] uppercase font-[family-name:var(--font-heading)]">
-          WABO DOGS
-        </p>
-      </div>
     </motion.div>
   );
 }

@@ -16,7 +16,7 @@ export function OfflineIndicator({ isOnline, pendingCount, syncedMessage }: Offl
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="text-center py-2 px-4 bg-amber-50 border border-amber-200 rounded-lg mb-4"
+          className="text-center py-2 px-4 bg-amber-50 border border-amber-200 mb-4"
         >
           <p className="text-amber-700 text-xs font-[family-name:var(--font-body)]">
             Offline — scores will sync when connected
@@ -33,7 +33,7 @@ export function OfflineIndicator({ isOnline, pendingCount, syncedMessage }: Offl
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="text-center py-2 px-4 bg-green-50 border border-green-200 rounded-lg mb-4"
+          className="text-center py-2 px-4 bg-green-50 border border-green-200 mb-4"
         >
           <p className="text-accent text-xs font-[family-name:var(--font-body)]">
             Scores synced!

@@ -56,7 +56,7 @@ export default function BoardPage() {
             >
               {/* Photo */}
               <div className="w-full md:w-64 flex-shrink-0">
-                <div className="relative aspect-square w-full max-w-[280px] mx-auto md:mx-0 rounded-2xl overflow-hidden">
+                <div className="relative aspect-square w-full max-w-[280px] mx-auto md:mx-0 overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}

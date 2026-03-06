@@ -23,9 +23,9 @@ export default function GolfHome() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="max-w-5xl mx-auto px-6 py-20">
         {/* Illustration Header */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-20">
           <Image
             src="/daydream.png"
             alt="Sunshine Daydream 2026"
@@ -37,82 +37,71 @@ export default function GolfHome() {
         </div>
 
         {/* Weather + Countdown row */}
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-16">
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-20">
           <WeatherWidget />
           <CountdownTimer />
         </div>
 
-        {/* Info Grid */}
-        <div className="max-w-3xl mx-auto mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
-            <div className="text-center">
-              <div className="text-text-muted text-xs tracking-[0.3em] uppercase mb-3 font-[family-name:var(--font-heading)]">
+        {/* Info — vertical spec sheet */}
+        <div className="max-w-lg mx-auto mb-20">
+          <div className="divide-y divide-border">
+            <div className="py-6">
+              <p className="text-text-muted text-[10px] tracking-[0.3em] uppercase mb-2 font-[family-name:var(--font-heading)]">
                 When
-              </div>
-              <div className="text-foreground text-2xl md:text-3xl font-[family-name:var(--font-heading)] font-bold">
+              </p>
+              <p className="text-foreground text-xl md:text-2xl font-[family-name:var(--font-heading)] font-bold">
                 June 17, 2026
-              </div>
-              <div className="text-text-secondary text-sm mt-2 font-[family-name:var(--font-body)]">
+              </p>
+              <p className="text-text-secondary text-sm mt-1 font-[family-name:var(--font-body)]">
                 First tee time @ 10:00 AM
-              </div>
+              </p>
             </div>
 
-            <div className="text-center">
-              <div className="text-text-muted text-xs tracking-[0.3em] uppercase mb-3 font-[family-name:var(--font-heading)]">
+            <div className="py-6">
+              <p className="text-text-muted text-[10px] tracking-[0.3em] uppercase mb-2 font-[family-name:var(--font-heading)]">
                 Where
-              </div>
-              <div className="text-foreground text-2xl md:text-3xl font-[family-name:var(--font-heading)] font-bold">
+              </p>
+              <p className="text-foreground text-xl md:text-2xl font-[family-name:var(--font-heading)] font-bold">
                 Glendoveer West
-              </div>
-              <div className="text-text-secondary text-sm mt-2 font-[family-name:var(--font-body)]">
+              </p>
+              <p className="text-text-secondary text-sm mt-1 font-[family-name:var(--font-body)]">
                 Portland, OR
-              </div>
+              </p>
             </div>
 
-            <div className="text-center">
-              <div className="text-text-muted text-xs tracking-[0.3em] uppercase mb-3 font-[family-name:var(--font-heading)]">
+            <div className="py-6">
+              <p className="text-text-muted text-[10px] tracking-[0.3em] uppercase mb-2 font-[family-name:var(--font-heading)]">
                 Format
-              </div>
-              <div className="text-foreground text-2xl md:text-3xl font-[family-name:var(--font-heading)] font-bold">
+              </p>
+              <p className="text-foreground text-xl md:text-2xl font-[family-name:var(--font-heading)] font-bold">
                 2 Person Scramble
-              </div>
-              <div className="text-text-secondary text-sm mt-2 font-[family-name:var(--font-body)]">
+              </p>
+              <p className="text-text-secondary text-sm mt-1 font-[family-name:var(--font-body)]">
                 Team Event
-              </div>
+              </p>
             </div>
-          </div>
-
-          {/* Dancing Bears */}
-          <div className="flex justify-center mb-8">
-            <Image
-              src="/dancing-bears.png"
-              alt="Dancing Bears"
-              width={400}
-              height={80}
-              className="w-[250px] md:w-[350px] opacity-70"
-            />
           </div>
 
           {/* Description */}
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-text-secondary text-base md:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+          <div className="mt-12">
+            <p className="text-text-secondary text-base leading-relaxed font-[family-name:var(--font-body)]">
               Join us for a day of golf, good vibes, and friendly competition at
               the beautiful Glendoveer West golf course. Grab your partner and
               get ready for a tournament you won&apos;t forget.
             </p>
-            <p className="text-accent-warm text-sm mt-4 italic font-[family-name:var(--font-body)]">
+            <p className="text-text-muted text-xs mt-6 italic font-[family-name:var(--font-heading)] tracking-wide">
               &quot;What a long strange trip it&apos;s been&quot;
             </p>
           </div>
         </div>
 
         {/* CTA Button */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-20">
           <Link
             href="/register"
-            className="group relative transform hover:scale-105 transition-all duration-300"
+            className="group"
           >
-            <div className="bg-gray-900 text-white py-5 px-16 text-lg md:text-xl tracking-[0.15em] uppercase font-bold font-[family-name:var(--font-heading)] border-2 border-gray-900 hover:bg-gray-800 transition-all rounded-lg">
+            <div className="border-2 border-foreground text-foreground py-4 px-14 text-sm tracking-[0.2em] uppercase font-bold font-[family-name:var(--font-heading)] hover:bg-foreground hover:text-white transition-colors">
               Register Now
             </div>
           </Link>

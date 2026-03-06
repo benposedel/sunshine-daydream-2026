@@ -100,7 +100,7 @@ export function CountdownTimer() {
       <div className="grid grid-cols-4 gap-3">
         {units.map(({ label, value }) => (
           <div key={label} className="text-center">
-            <div className="bg-gray-100 rounded-lg p-3 border border-border">
+            <div className="bg-gray-100 p-3 border border-border">
               <p className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-mono)] text-foreground tabular-nums">
                 {String(value).padStart(2, "0")}
               </p>

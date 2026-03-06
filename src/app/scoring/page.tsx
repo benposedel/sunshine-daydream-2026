@@ -111,7 +111,7 @@ export default function ScoringPage() {
                   autoFocus
                   className={`w-full text-center text-4xl tracking-[0.5em] font-[family-name:var(--font-mono)] font-bold bg-white border-2 ${
                     pinError ? "border-grateful-red/60 animate-[shake_0.3s_ease-in-out]" : "border-border"
-                  } text-foreground rounded-lg px-4 py-4 focus:outline-none focus:border-accent transition-colors mb-4`}
+                  } text-foreground px-4 py-4 focus:outline-none focus:border-accent transition-colors mb-4`}
                 />
 
                 {pinError && (

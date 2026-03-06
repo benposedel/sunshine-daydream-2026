@@ -17,7 +17,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           placeholder=" "
           className={`peer w-full bg-white border-2 ${
             error ? "border-grateful-red/60" : "border-border"
-          } text-foreground rounded-lg px-4 pt-6 pb-2 text-base focus:outline-none focus:border-accent transition-colors font-[family-name:var(--font-body)] ${className}`}
+          } text-foreground px-4 pt-6 pb-2 text-base focus:outline-none focus:border-accent transition-colors font-[family-name:var(--font-body)] ${className}`}
           {...props}
         />
         <label
