@@ -23,18 +23,29 @@ export default function GolfHome() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-5xl mx-auto px-6 py-20">
-        {/* Illustration Header */}
-        <div className="flex justify-center mb-20">
-          <Image
-            src="/daydream.png"
-            alt="Sunshine Daydream 2026"
-            width={900}
-            height={1350}
-            priority
-            className="w-[280px] md:w-[400px] h-auto"
-          />
-        </div>
+      {/* Full-width banner */}
+      <div className="w-full mb-20">
+        {/* Wide banner for desktop */}
+        <Image
+          src="/daydream-wide.png"
+          alt="Sunshine Daydream 2026"
+          width={1600}
+          height={900}
+          priority
+          className="hidden md:block w-full h-auto"
+        />
+        {/* Vertical image for mobile */}
+        <Image
+          src="/daydream.png"
+          alt="Sunshine Daydream 2026"
+          width={900}
+          height={1350}
+          priority
+          className="md:hidden w-full h-auto"
+        />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 pb-20">
 
         {/* Weather + Countdown row */}
         <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-20">
@@ -50,7 +61,7 @@ export default function GolfHome() {
                 When
               </p>
               <p className="text-foreground text-xl md:text-2xl font-[family-name:var(--font-heading)] font-bold">
-                June 17, 2026
+                June 14, 2026
               </p>
               <p className="text-text-secondary text-sm mt-1 font-[family-name:var(--font-body)]">
                 First tee time @ 10:00 AM
