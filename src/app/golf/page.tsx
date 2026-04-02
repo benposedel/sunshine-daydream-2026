@@ -1,26 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { WeatherWidget } from "@/components/home/WeatherWidget";
 import { CountdownTimer } from "@/components/home/CountdownTimer";
 
 export default function GolfHome() {
-  const router = useRouter();
-  const [authorized, setAuthorized] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem("golf-access") !== "true") {
-      router.replace("/");
-    } else {
-      setAuthorized(true);
-    }
-  }, [router]);
-
-  if (!authorized) return null;
-
   return (
     <div className="min-h-screen bg-white">
       {/* Full-width banner */}
