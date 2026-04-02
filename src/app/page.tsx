@@ -1,6 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+// April 6, 2026 3:00 PM PDT (UTC-7)
+const LAUNCH_TIME = new Date("2026-04-06T22:00:00Z").getTime();
+
 export default function TeaserPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    function checkLaunch() {
+      if (Date.now() >= LAUNCH_TIME) {
+        router.replace("/golf");
+      }
+    }
+
+    // Check immediately on load
+    checkLaunch();
+
+    // Check every second so it redirects right at 3 PM
+    const interval = setInterval(checkLaunch, 1000);
+    return () => clearInterval(interval);
+  }, [router]);
+
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center overflow-hidden">
       {/* Looping background video */}
@@ -14,8 +37,8 @@ export default function TeaserPage() {
         <source src="/teaser.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Blur + dark overlay */}
+      <div className="absolute inset-0 backdrop-blur-md bg-black/40" />
 
       {/* Text overlay */}
       <div className="relative z-10 text-center px-4 w-full">
