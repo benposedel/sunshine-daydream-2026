@@ -3,16 +3,18 @@ import Link from "next/link";
 
 const BOARD_MEMBERS = [
   {
-    name: "Director One",
-    title: "Co-Founder & President",
+    name: "Everett Nate Yockey",
+    title: "Co-Founder & Chief Creative Officer",
     image: "/board-member-1.jpg",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    bio: "Everett Nate Yockey is a Director and Cinematographer based in Portland, Oregon. With an eye for cinematic storytelling and a background spanning commercial brand work and narrative film, Everett brings a considered, visual-first approach to every project. He works with brands, agencies, and filmmakers across Portland, Seattle, and the broader Pacific Northwest and beyond.\n\nAvailable for commercial campaigns, branded content, short films, and feature work. Get in touch to collaborate.",
+    linkedin: "https://www.linkedin.com/in/everettyockey/",
   },
   {
-    name: "Director Two",
-    title: "Co-Founder & Vice President",
+    name: "Ben Posedel",
+    title: "Co-Founder & Chief Operating Officer",
     image: "/board-member-2.jpg",
-    bio: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    bio: "Senior Program Manager/Producer\nSenior Program Manager with 14+ Years Leading Cross-Functional Teams and Managing Data-Driven Projects. Beginning with ideation for client pitches all the way to delivery of projects on time and on budget and everything in between all the while maintaining positive working relationships.",
+    linkedin: "https://www.linkedin.com/in/ben-posedel-846a1115",
   },
 ];
 
@@ -74,10 +76,32 @@ export default function BoardPage() {
                 <p className="text-text-muted text-xs tracking-[0.15em] uppercase font-[family-name:var(--font-heading)] mb-4">
                   {member.title}
                 </p>
-                <p className="text-text-secondary text-base leading-relaxed font-[family-name:var(--font-body)]">
-                  {member.bio}
-                </p>
-              </div>
+                <div className="text-text-secondary text-base leading-relaxed font-[family-name:var(--font-body)] space-y-3">
+                  {member.bio.split("\n\n").map((paragraph, j) => (
+                    <p key={j}>{paragraph}</p>
+                  ))}
+                </div>
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 text-text-muted hover:text-foreground transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    <span className="text-sm font-[family-name:var(--font-heading)] tracking-wider uppercase">
+                      LinkedIn
+                    </span>
+                  </a>
+                )}
             </div>
           ))}
         </div>
