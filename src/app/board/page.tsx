@@ -102,6 +102,7 @@ export default function BoardPage() {
                     </span>
                   </a>
                 )}
+              </div>
             </div>
           ))}
         </div>
