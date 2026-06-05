@@ -93,14 +93,9 @@ export default function GolfHome() {
 
         {/* CTA Button */}
         <div className="flex justify-center mb-20">
-          <Link
-            href="/register"
-            className="group"
-          >
-            <div className="border-2 border-foreground text-foreground py-4 px-14 text-sm tracking-[0.2em] uppercase font-bold font-[family-name:var(--font-heading)] hover:bg-foreground hover:text-white transition-colors">
-              Register Now
-            </div>
-          </Link>
+          <div className="border-2 border-gray-400 text-gray-400 py-4 px-14 text-sm tracking-[0.2em] uppercase font-bold font-[family-name:var(--font-heading)] cursor-default">
+            Registration Closed
+          </div>
         </div>
 
         {/* Footer */}

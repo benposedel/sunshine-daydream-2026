@@ -67,19 +67,28 @@ export function NavOverlay({ onClose }: NavOverlayProps) {
       >
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href;
+          const isDisabled = item.href === "/register";
           return (
             <motion.div key={item.href} variants={itemVariants}>
-              <Link
-                href={item.href}
-                onClick={onClose}
-                className={`text-3xl md:text-5xl font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase transition-colors duration-200 ${
-                  isActive
-                    ? "text-accent"
-                    : "text-foreground hover:text-accent-warm"
-                }`}
-              >
-                {item.label}
-              </Link>
+              {isDisabled ? (
+                <span
+                  className="text-3xl md:text-5xl font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase text-gray-400 line-through cursor-default"
+                >
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  href={item.href}
+                  onClick={onClose}
+                  className={`text-3xl md:text-5xl font-[family-name:var(--font-heading)] font-bold tracking-wider uppercase transition-colors duration-200 ${
+                    isActive
+                      ? "text-accent"
+                      : "text-foreground hover:text-accent-warm"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )}
             </motion.div>
           );
         })}
